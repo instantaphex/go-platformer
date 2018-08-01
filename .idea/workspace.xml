@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6dfd436-c568-4d84-b44c-57d76aa4c991" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/tmxloader.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/area.go" beforeDir="false" afterPath="$PROJECT_DIR$/area.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera.go" beforeDir="false" afterPath="$PROJECT_DIR$/camera.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/define.go" beforeDir="false" afterPath="$PROJECT_DIR$/define.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filemanager.go" beforeDir="false" afterPath="$PROJECT_DIR$/filemanager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps.go" beforeDir="false" afterPath="$PROJECT_DIR$/fps.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/game.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map.go" beforeDir="false" afterPath="$PROJECT_DIR$/map.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tile.go" beforeDir="false" afterPath="$PROJECT_DIR$/tile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yoshi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmxloader.go" beforeDir="false" afterPath="$PROJECT_DIR$/tmxloader.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,14 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/game.go">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
-              <folding>
-                <element signature="e#14#71#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/map.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1014">
+              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -40,65 +38,32 @@
       <file leaf-file-name="tmxloader.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tmxloader.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="306">
+              <caret line="96" selection-start-line="96" selection-end-line="96" />
               <folding>
-                <element signature="e#14#78#0" expanded="true" />
+                <element signature="e#14#75#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/map.go">
+      <file leaf-file-name="game.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="80" column="70" lean-forward="true" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
+            <state relative-caret-position="180">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <folding>
+                <element signature="e#14#71#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="area.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/area.go">
+      <file leaf-file-name="entity.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/entity.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="define.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/define.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filemanager.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/filemanager.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tile.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tile.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testmap.tmx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmx/testmap.tmx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            <state relative-caret-position="2149">
+              <caret line="210" column="20" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -119,9 +84,12 @@
       <find>fps</find>
       <find>TILE_TYPE</find>
       <find>png</find>
+      <find>areaControl</find>
+      <find>MAP_WIDTH</find>
     </findStrings>
     <replaceStrings>
       <replace>g *Graphics</replace>
+      <replace>m.Width</replace>
     </replaceStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.8.3/libexec" />
@@ -142,14 +110,14 @@
         <option value="$PROJECT_DIR$/camera.go" />
         <option value="$PROJECT_DIR$/fps.go" />
         <option value="$PROJECT_DIR$/entity.go" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/filemanager.go" />
         <option value="$PROJECT_DIR$/tmx/testmap.tmx" />
         <option value="$PROJECT_DIR$/area.go" />
-        <option value="$PROJECT_DIR$/tmxloader.go" />
         <option value="$PROJECT_DIR$/define.go" />
-        <option value="$PROJECT_DIR$/map.go" />
         <option value="$PROJECT_DIR$/game.go" />
+        <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/tmxloader.go" />
+        <option value="$PROJECT_DIR$/map.go" />
       </list>
     </option>
   </component>
@@ -163,7 +131,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="26" />
+    <option name="x" value="37" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="837" />
@@ -230,7 +198,7 @@
     </configuration>
   </component>
   <component name="ToolWindowManager">
-    <frame x="26" y="23" width="1400" height="837" extended-state="0" />
+    <frame x="37" y="23" width="1400" height="837" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.25" />
@@ -240,11 +208,11 @@
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32896462" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32896462" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39973786" />
+      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.39973786" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -289,19 +257,13 @@
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/entity.go</url>
-          <line>75</line>
-          <properties />
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/map.go</url>
-          <line>42</line>
+          <line>33</line>
           <properties />
-          <option name="timeStamp" value="57" />
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="58" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="GoApplicationRunConfiguration">
@@ -635,13 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/go/1.8.3/libexec/src/io/ioutil/ioutil.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -653,13 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entity.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
         </state>
       </provider>
     </entry>
@@ -698,16 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tmxloader.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#14#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tile.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -724,25 +662,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/area.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state relative-caret-position="209">
+          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map.go">
+    <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="80" column="70" lean-forward="true" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entity.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2149">
+          <caret line="210" column="20" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+        <state relative-caret-position="180">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
             <element signature="e#14#71#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmxloader.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+          <folding>
+            <element signature="e#14#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1014">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
         </state>
       </provider>
     </entry>

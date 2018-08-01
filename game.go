@@ -60,7 +60,7 @@ func (g *Game) Init() bool {
 	/*  DUMPING GROUND */
 	g.player = NewEntity(fileManager.GetImagePath("yoshi2"), 64, 64, 8)
 	EntityList = append(EntityList, g.player)
-	areaControl.Load("2")
+	mapControl.Load("testmap")
 	g.keysHeld = make(map[sdl.Keycode]bool)
 	cameraControl.targetMode = TARGET_MODE_CENTER
 	cameraControl.SetTarget(&g.player.X, &g.player.Y)
@@ -128,7 +128,7 @@ func (g *Game) Update() {
 
 func (g *Game) Render() {
 	g.renderer.Clear()
-	areaControl.Render(int32(-cameraControl.GetX()), -int32(cameraControl.GetY()))
+	mapControl.Render(int32(-cameraControl.GetX()), -int32(cameraControl.GetY()))
 	for _, entity := range EntityList {
 		entity.Render()
 	}
@@ -139,7 +139,7 @@ func (g *Game) Cleanup() {
 	for _, entity := range EntityList {
 		entity.Cleanup()
 	}
-	areaControl.Cleanup()
+	mapControl.Cleanup()
 	g.renderer.Destroy()
 	g.window.Destroy()
 	sdl.Quit()

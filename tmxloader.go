@@ -94,13 +94,4 @@ func Parse(b []byte) (TmxMap, error) {
 	return parsed, err
 }
 
-func openTMX(filename string) TmxMap {
-	path := fileManager.GetPath("tmx", filename, "tmx")
-	f, err := ioutil.ReadFile(path)
 
-	if err != nil {
-		panic(err)
-	}
-	parsed, _ := Parse(f)
-	return parsed
-}

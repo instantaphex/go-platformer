@@ -265,7 +265,8 @@ func (e *Entity) PosValid(newX int32, newY int32) bool {
 
 	for iY := startY; iY <= endY; iY++ {
 		for iX := startX; iX <= endX; iX++ {
-			tile := areaControl.GetTile(iX * TILE_SIZE, iY * TILE_SIZE)
+			// tile := areaControl.GetTile(iX * TILE_SIZE, iY * TILE_SIZE)
+			tile := mapControl.GetTile(iX * TILE_SIZE, iY * TILE_SIZE)
 
 			if e.PosValidTile(tile) == false {
 				retVal = false

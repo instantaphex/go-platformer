@@ -5,7 +5,7 @@ var gfx = Graphics{}
 var EntityList []*Entity
 var EntityCollisionList []EntityCollision
 var cameraControl = Camera{}
-var areaControl = Area{}
+var mapControl = Map{}
 var fpsControl = Fps{}
 var fileManager = FileManager{}
 
