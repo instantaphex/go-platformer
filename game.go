@@ -77,7 +77,6 @@ func (g *Game) HandleInput() {
 func (g *Game) Event(e sdl.Event) {
 	switch t := e.(type) {
 	case *sdl.QuitEvent:
-		println("Quit")
 		g.running = false
 		break
 	case *sdl.KeyboardEvent:

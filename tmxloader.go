@@ -1,12 +1,5 @@
 package main
 
-import (
-	"encoding/xml"
-	"io/ioutil"
-	"strings"
-	"strconv"
-)
-
 type TmxMap struct {
 	Version      string           `xml:"version,attr"`
 	Orientation  string           `xml:"orientation,attr"`
@@ -70,28 +63,3 @@ type TmxObject struct {
 	Width  int    `xml:"width,attr"`
 	Height int    `xml:"height,attr"`
 }
-
-// Parse reads the TMX-encoded data and converts it into a TmxMap object
-// Returns an error if the TMX-encoded data is malformed
-func Parse(b []byte) (TmxMap, error) {
-	var parsed TmxMap
-	err := xml.Unmarshal(b, &parsed)
-
-	for i, v := range parsed.Layers {
-		str := strings.Replace(v.Data.Value, "\n", "", -1)
-		arr := strings.Split(str, ",")
-		var converted []int
-		for _, v := range arr {
-			num, err := strconv.Atoi(v)
-			if err != nil {
-				panic(err)
-			}
-			converted = append(converted, num)
-		}
-		parsed.Layers[i].Data.ParsedData = converted
-	}
-
-	return parsed, err
-}
-
-

@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"os"
 	"io/ioutil"
+	"encoding/xml"
+	"strings"
+	"strconv"
 )
 
 type Map struct {
@@ -15,34 +18,20 @@ type Map struct {
 	tileList []Tile
 }
 
-/*func (m *Map) Load(mapName string) bool {
-	f, err := fileManager.GetMap(mapName)
-	if err != nil {
-		fmt.Print(err)
-		return false
-	}
-	defer f.Close()
-
-	for y := 0; y < m.Height; y++ {
-		for x:= 0; x < m.Width; x++ {
-			tmpTile := Tile{}
-			fmt.Fscanf(f, "%d:%d", &tmpTile.TileID, &tmpTile.TypeID)
-			m.tileList = append(m.tileList, tmpTile)
-		}
-		fmt.Fscanf(f, "\n")
-	}
-	return true
-}*/
-
-func (m *Map) Load(mapName string) bool {
+func (m *Map) Load(mapName string) error {
 	var err error
 
-	tmx := m.openTmx(mapName)
+	tmx, err := m.openTmx(mapName)
+	if err != nil {
+		return err
+	}
+
 	tilePath := fileManager.GetTilesetPath("tilemap")
 	m.Texture, err = gfx.Load(game.renderer, tilePath)
+
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to load tileset: %s\n", err)
-		return false
+		return err
 	}
 
 	m.Height = int32(tmx.Height)
@@ -63,7 +52,7 @@ func (m *Map) Load(mapName string) bool {
 		tmpTile.TypeID = typeId
 		m.tileList = append(m.tileList, tmpTile)
 	}
-	return true
+	return nil
 }
 
 func (m *Map) Render(mapX int32, mapY int32) {
@@ -116,13 +105,35 @@ func (m *Map) Cleanup() {
 	m.Texture.Destroy()
 }
 
-func (m Map) openTmx(filename string) TmxMap {
+func (m Map) openTmx(filename string) (TmxMap, error) {
 	path := fileManager.GetPath("tmx", filename, "tmx")
 	f, err := ioutil.ReadFile(path)
 
 	if err != nil {
-		panic(err)
+		fmt.Fprintf(os.Stderr, "Failed to read tmx file: %s\n", err)
 	}
-	parsed, _ := Parse(f)
-	return parsed
+
+	parsed, err := m.ParseTmx(f)
+	return parsed, err
+}
+
+func (m Map) ParseTmx(b []byte) (TmxMap, error) {
+	var parsed TmxMap
+	err := xml.Unmarshal(b, &parsed)
+
+	for i, v := range parsed.Layers {
+		str := strings.Replace(v.Data.Value, "\n", "", -1)
+		arr := strings.Split(str, ",")
+		var converted []int
+		for _, v := range arr {
+			num, err := strconv.Atoi(v)
+			if err != nil {
+				panic(err)
+			}
+			converted = append(converted, num)
+		}
+		parsed.Layers[i].Data.ParsedData = converted
+	}
+
+	return parsed, err
 }
