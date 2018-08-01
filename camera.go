@@ -8,21 +8,21 @@ const (
 )
 
 type Camera struct {
-	x int32
-	y int32
+	x float32
+	y float32
 
-	targetX *int32
-	targetY *int32
+	targetX *float32
+	targetY *float32
 
 	targetMode int
 }
 
-func (c *Camera) Move(moveX int32, moveY int32) {
+func (c *Camera) Move(moveX float32, moveY float32) {
 	c.x += moveX
 	c.y += moveY
 }
 
-func (c *Camera) GetX() int32 {
+func (c *Camera) GetX() float32 {
 	if c.targetX != nil {
 		if c.targetMode == TARGET_MODE_CENTER {
 			return *c.targetX - (WWIDTH / 2)
@@ -32,7 +32,7 @@ func (c *Camera) GetX() int32 {
 	return c.x
 }
 
-func (c *Camera) GetY() int32 {
+func (c *Camera) GetY() float32 {
 	if c.targetY != nil {
 		if c.targetMode == TARGET_MODE_CENTER {
 			return *c.targetY - (WHEIGHT / 2)
@@ -42,12 +42,12 @@ func (c *Camera) GetY() int32 {
 	return c.y
 }
 
-func (c *Camera) SetPos(x int32, y int32) {
+func (c *Camera) SetPos(x float32, y float32) {
 	c.x = x
 	c.y = y
 }
 
-func (c *Camera) SetTarget(x *int32, y *int32) {
+func (c *Camera) SetTarget(x *float32, y *float32) {
 	c.targetX = x
 	c.targetY = y
 }

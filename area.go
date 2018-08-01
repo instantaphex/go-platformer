@@ -13,20 +13,17 @@ type Area struct {
 }
 
 func (a *Area) Load(file string) error {
-	fp, err := os.Open(file)
-
+	fp, err := fileManager.GetArea(file)
 	if err != nil {
 		fmt.Print(err)
 		return err
 	}
 	defer fp.Close()
 
-	// grab tileset from area and load it
-	var tilesetFile string
-	cwd, _ := os.Getwd()
-	fmt.Fscanf(fp, "%s", &tilesetFile)
-	tilesetFile = cwd + tilesetFile
-	a.tileset, err = gfx.Load(game.renderer, tilesetFile)
+	var tileset string
+	fmt.Fscanf(fp, "%s", &tileset)
+	tileset = fileManager.GetTilesetPath(tileset)
+	a.tileset, err = gfx.Load(game.renderer, tileset)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to load map tileset: %s\n", err)
 		panic(err)
@@ -37,11 +34,10 @@ func (a *Area) Load(file string) error {
 
 	for x := 0; int32(x) < a.areaSize; x++ {
 		for y := 0; int32(y) < a.areaSize; y++ {
-			var mapFile string
-			fmt.Fscanf(fp, "%s", &mapFile)
-			cwd, _ := os.Getwd()
+			var mapName string
+			fmt.Fscanf(fp, "%s", &mapName)
 			tmpMap := Map{}
-			tmpMap.Load(cwd + mapFile)
+			tmpMap.Load(mapName)
 			tmpMap.Texture = a.tileset
 			a.mapList = append(a.mapList, tmpMap)
 		}
@@ -69,6 +65,33 @@ func (a *Area) Render(cameraX int32, cameraY int32) {
 
 		a.mapList[id].Render(x, y)
 	}
+}
+
+func (a *Area) GetMap(x int32, y int32) *Map {
+	mapWidth := int32(MAP_WIDTH * TILE_SIZE)
+	mapHeight := int32(MAP_HEIGHT * TILE_SIZE)
+	id := x / mapWidth
+	id = id + ((y / mapHeight) * a.areaSize)
+
+	if id < 0 || id >= int32(len(a.mapList)) {
+		return nil
+	}
+
+	return &a.mapList[id]
+}
+
+func (a *Area) GetTile(x int32, y int32) *Tile {
+	mapWidth := int32(MAP_WIDTH * TILE_SIZE)
+	mapHeight := int32(MAP_HEIGHT * TILE_SIZE)
+
+	theMap := a.GetMap(x, y)
+
+	if theMap == nil { return nil }
+
+	x = x % mapWidth
+	y = y % mapHeight
+
+	return theMap.GetTile(x, y)
 }
 
 func (a *Area) Cleanup() {

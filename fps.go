@@ -17,8 +17,8 @@ func (f *Fps) Update() {
 		f.frames = 0
 	}
 
-	speedMilli := sdl.GetTicks() - f.lastTime
-	speedSeconds := float32(speedMilli / 1000.0)
+	speedMilli := float32(sdl.GetTicks() - f.lastTime)
+	speedSeconds := float32(speedMilli) / float32(1000.0)
 	f.speedFactor = speedSeconds * 60.0
 	f.lastTime = sdl.GetTicks()
 	f.frames++

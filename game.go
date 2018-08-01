@@ -11,6 +11,7 @@ type Game struct {
 	renderer *sdl.Renderer
 	window *sdl.Window
 	keysHeld map[sdl.Keycode]bool
+	player *Entity
 }
 
 func (g *Game) Run() int {
@@ -56,9 +57,14 @@ func (g *Game) Init() bool {
 		return false
 	}
 
-	EntityList = append(EntityList, NewEntity("/Users/jb/go/src/github.com/instantaphex/pastor-carrol/yoshi.png", 64, 64, 8))
-	areaControl.Load("./maps/1.area")
+	/*  DUMPING GROUND */
+	g.player = NewEntity(fileManager.GetImagePath("yoshi2"), 64, 64, 8)
+	EntityList = append(EntityList, g.player)
+	areaControl.Load("2")
 	g.keysHeld = make(map[sdl.Keycode]bool)
+	cameraControl.targetMode = TARGET_MODE_CENTER
+	cameraControl.SetTarget(&g.player.X, &g.player.Y)
+	/*  DUMPING GROUND */
 	return true
 }
 
@@ -78,25 +84,51 @@ func (g *Game) Event(e sdl.Event) {
 		sym := e.(*sdl.KeyboardEvent).Keysym.Sym
 		if t.State == sdl.PRESSED {
 			g.keysHeld[sym] = true
+			if sym == sdl.K_LEFT {
+				g.player.moveLeft = true
+			}
+			if sym == sdl.K_RIGHT {
+				g.player.moveRight = true
+			}
+			if sym == sdl.K_SPACE {
+				g.player.Jump()
+			}
 		}
 		if t.State == sdl.RELEASED {
 			g.keysHeld[sym] = false
+			if sym == sdl.K_LEFT {
+				g.player.moveLeft = false
+			}
+			if sym == sdl.K_RIGHT {
+				g.player.moveRight = false
+			}
 		}
 	}
 }
 
 func (g *Game) Update() {
 	fpsControl.Update()
-	fmt.Println(fpsControl.GetFps())
 	for _, entity := range EntityList {
 		entity.Update()
 	}
+	for i := 0; i < len(EntityCollisionList); i++ {
+		a := EntityCollisionList[i].entityA
+		b := EntityCollisionList[i].entityB
+
+		if a == nil || b == nil { continue }
+
+		if a.OnCollision(b) {
+			b.OnCollision(a)
+		}
+	}
+	EntityCollisionList = nil
+
 	cameraControl.Update(g.keysHeld)
 }
 
 func (g *Game) Render() {
 	g.renderer.Clear()
-	areaControl.Render(cameraControl.GetX(), cameraControl.GetY())
+	areaControl.Render(int32(-cameraControl.GetX()), -int32(cameraControl.GetY()))
 	for _, entity := range EntityList {
 		entity.Render()
 	}
