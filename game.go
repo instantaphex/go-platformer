@@ -64,6 +64,10 @@ func (g *Game) Init() bool {
 	g.keysHeld = make(map[sdl.Keycode]bool)
 	cameraControl.targetMode = TARGET_MODE_CENTER
 	cameraControl.SetTarget(&g.player.X, &g.player.Y)
+	frames := AnimationFrames{}
+	spriteData := frames.Parse()
+	test := spriteData.Frames["wtf"]
+	fmt.Print(test)
 	/*  DUMPING GROUND */
 	return true
 }

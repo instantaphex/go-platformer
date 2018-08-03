@@ -41,7 +41,6 @@ func (m *Map) Load(mapName string) error {
 	for _, v := range tmx.Layers[0].Data.ParsedData {
 		var tileId, typeId int32
 		if v == 0 {
-			tileId = 33
 			typeId = TILE_TYPE_NONE
 		} else {
 			tileId = int32(v - 1)
