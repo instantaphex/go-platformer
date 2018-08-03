@@ -3,7 +3,7 @@ package main
 import "github.com/veandco/go-sdl2/sdl"
 
 const (
-	TARGET_MODE_NORMAL = 0 << iota
+	TARGET_MODE_NORMAL = iota
 	TARGET_MODE_CENTER
 )
 

@@ -1,16 +1,20 @@
 package main
 
 import (
-	"encoding/json"
 	"os"
 	"fmt"
-	"io/ioutil"
 	"github.com/veandco/go-sdl2/sdl"
+	"io/ioutil"
+	"encoding/json"
 )
 
-type AnimationFrames struct {
-	Frames map[string][]AnimationFrame `json:"frames"`
+type TextureAtlas struct {
 	Texture *sdl.Texture
+	Images map[string][]AnimationFrame `json:"frames"`
+}
+
+type AnimationFrames struct {
+	Images map[string][]AnimationFrame `json:"frames"`
 }
 
 type AnimationFrame struct {
@@ -25,19 +29,29 @@ type AnimationFrame struct {
 	Rotated bool `json:"rotated"`
 }
 
-func (af *AnimationFrames) Parse() *AnimationFrames {
+func (ta *TextureAtlas) Init() {
+	ta.LoadAssetJson()
+	ta.LoadTexture()
+}
+
+func (ta* TextureAtlas) LoadAssetJson() {
 	jsonFile, err := os.Open(fileManager.GetPath("assets", "assets", "json"))
 	if err != nil {
 		fmt.Println(err)
 	}
 	defer jsonFile.Close()
 	byteValue, _ := ioutil.ReadAll(jsonFile)
-	var frames AnimationFrames
-	json.Unmarshal(byteValue, &frames)
-	af.Texture, err = gfx.Load(game.renderer, fileManager.GetImagePath("assets"))
+	json.Unmarshal(byteValue, ta)
+}
+
+func (ta *TextureAtlas) LoadTexture() {
+	var err error
+	ta.Texture, err = gfx.Load(game.renderer, fileManager.GetImagePath("assets"))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to load assets: %s\n", err)
 	}
-	return &frames
 }
 
+func (ta *TextureAtlas) Get(asset string) []AnimationFrame {
+	return ta.Images[asset]
+}

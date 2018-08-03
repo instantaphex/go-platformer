@@ -57,17 +57,16 @@ func (g *Game) Init() bool {
 		return false
 	}
 
+	g.renderer.SetScale(1, 1)
+
 	/*  DUMPING GROUND */
-	g.player = NewEntity(fileManager.GetImagePath("yoshi2"), 64, 64, 8)
+	textureAtlas.Init()
+	g.player = NewPlayer()
 	EntityList = append(EntityList, g.player)
 	mapControl.Load("testmap")
 	g.keysHeld = make(map[sdl.Keycode]bool)
 	cameraControl.targetMode = TARGET_MODE_CENTER
 	cameraControl.SetTarget(&g.player.X, &g.player.Y)
-	frames := AnimationFrames{}
-	spriteData := frames.Parse()
-	test := spriteData.Frames["wtf"]
-	fmt.Print(test)
 	/*  DUMPING GROUND */
 	return true
 }
@@ -131,7 +130,7 @@ func (g *Game) Update() {
 
 func (g *Game) Render() {
 	g.renderer.Clear()
-	mapControl.Render(int32(-cameraControl.GetX()), -int32(cameraControl.GetY()))
+	mapControl.Render(int32(-cameraControl.GetX()), int32(-cameraControl.GetY()))
 	for _, entity := range EntityList {
 		entity.Render()
 	}

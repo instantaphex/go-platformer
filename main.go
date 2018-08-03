@@ -8,6 +8,7 @@ var cameraControl = Camera{}
 var mapControl = Map{}
 var fpsControl = Fps{}
 var fileManager = FileManager{}
+var textureAtlas = TextureAtlas{}
 
 func main() {
 	game.Run()
