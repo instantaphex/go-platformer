@@ -1,6 +1,8 @@
 package main
 
-import "github.com/veandco/go-sdl2/sdl"
+import (
+	"github.com/veandco/go-sdl2/sdl"
+)
 
 type Renderable interface {
 	Render(x, y int32)
@@ -17,7 +19,7 @@ type Sprite struct {
 	animation Animation
 }
 
-func NewSprite(asset string) *Sprite {
+func NewSprite(asset string, frameRate int) *Sprite {
 	animationFrames := textureAtlas.Get(asset)
 	firstFrame := animationFrames[0]
 	return &Sprite {
@@ -28,12 +30,16 @@ func NewSprite(asset string) *Sprite {
 		FlipHorizontal: false,
 		FlipVertical: false,
 		frames: textureAtlas.Get(asset),
-		animation: NewAnimation(len(animationFrames)),
+		animation: NewAnimation(len(animationFrames), frameRate),
 	}
 }
 
 func (s *Sprite) Render(x, y int32) {
-	frame := s.frames[s.animation.GetCurrentFrame()]
+	currentFrameIdx := s.animation.GetCurrentFrame()
+	if currentFrameIdx > len(s.frames) - 1 {
+		currentFrameIdx = 0
+	}
+	frame := s.frames[currentFrameIdx]
 	xOffset := frame.SourceW - frame.W
 	yOffset := frame.SourceH - frame.H
 	s.X = x
@@ -51,7 +57,9 @@ func (s *Sprite) Render(x, y int32) {
 	s.animation.Animate()
 }
 
-func (s *Sprite) SetAsset(asset string) {
-	s.frames = textureAtlas.Get(asset)
+func (s *Sprite) SetState(state EntityState) {
+	s.frames = textureAtlas.Get(state.Asset)
+	s.animation.SetFrameRate(state.FrameRate)
+	s.animation.SetMaxFrames(len(s.frames))
 }
 

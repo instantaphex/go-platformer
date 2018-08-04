@@ -11,11 +11,11 @@ type Animation struct {
 	maxFrames int
 }
 
-func NewAnimation(frameCount int) Animation {
+func NewAnimation(frameCount int, frameRate int) Animation {
 	return Animation {
 		currentFrame: 0,
 		frameInc: 1,
-		frameRate: 100,
+		frameRate: frameRate,
 		oldTime: 0,
 		maxFrames: frameCount,
 	}
@@ -45,6 +45,10 @@ func (a *Animation) SetCurrentFrame(frame int) {
 	}
 
 	a.currentFrame = frame
+}
+
+func (a *Animation) SetMaxFrames(maxFrames int) {
+	a.maxFrames = maxFrames
 }
 
 func (a *Animation) GetCurrentFrame() int {

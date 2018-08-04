@@ -21,9 +21,24 @@ const (
 	ENTITY_STATE_DIE
 )
 
+type GameEntity interface {
+	Update()
+	Render()
+	Cleanup()
+	GetEntity() *Entity
+}
+
 type EntityCollision struct {
 	entityA *Entity
 	entityB *Entity
+}
+
+type EntityState struct {
+	Asset string
+	FrameRate int
+	FlipHorizontal bool
+	FlipVertical bool
+	InheritFlip bool
 }
 
 type Entity struct {
@@ -33,99 +48,96 @@ type Entity struct {
 	X float32
 	Y float32
 
-	flags int32
+	Flags int32
 
-	moveLeft bool
-	moveRight bool
-	dead bool
-	canJump bool
+	MoveLeft bool
+	MoveRight bool
+	Dead bool
+	CanJump bool
 
-	entType int
+	EntityType int
 
-	speedX float32
-	speedY float32
+	SpeedX float32
+	SpeedY float32
 
-	accelX float32
-	accelY float32
+	AccelX float32
+	AccelY float32
 
-	maxSpeedX float32
-	maxSpeedY float32
+	MaxSpeedX float32
+	MaxSpeedY float32
 
-	StateChannel chan int
-	CurrentState int
+	IsJumping bool
+
+	StateMap map[int]EntityState
 }
 
-func NewEntity(asset string) *Entity {
+func NewEntity(stateMap map[int]EntityState, x, y int32) *Entity {
 	return &Entity{
-		X: 0,
-		Y: 0,
-		Image: NewSprite(asset),
-		moveLeft: false,
-		moveRight: false,
-		entType: ENTITY_TYPE_NPC,
-		dead: false,
-		flags: ENTITY_FLAG_GRAVITY,
-		speedX: 0,
-		speedY: 0,
-		accelX: 0,
-		accelY: 0,
-		maxSpeedX: 10,
-		maxSpeedY: 12,
-		StateChannel: make(chan int),
+		X: float32(x),
+		Y: float32(y),
+		Image: NewSprite(stateMap[ENTITY_STATE_IDLE].Asset, stateMap[ENTITY_STATE_IDLE].FrameRate),
+		MoveLeft: false,
+		MoveRight: false,
+		EntityType: ENTITY_TYPE_NPC,
+		Dead: false,
+		Flags: ENTITY_FLAG_GRAVITY,
+		SpeedX: 0,
+		SpeedY: 0,
+		AccelX: 0,
+		AccelY: 0,
+		MaxSpeedX: 5,
+		MaxSpeedY: 8,
+		StateMap: stateMap,
 	}
-}
-
-func (e* Entity) Load(file string, width int, height int, maxFrames int) bool {
-	return true
 }
 
 func (e* Entity) Update() {
-	if !e.moveLeft && !e.moveRight {
+	e.UpdateState()
+	e.UpdatePosition()
+}
+
+func (e *Entity) UpdateState() {
+	if e.IsJumping {
+		e.SetState(ENTITY_STATE_JUMP)
+		return
+	}
+
+	if !e.MoveLeft && !e.MoveRight {
 		e.SetState(ENTITY_STATE_IDLE)
 		e.StopMove()
 	}
-	if e.moveLeft {
+	if e.MoveLeft {
 		e.SetState(ENTITY_STATE_LEFT)
-		e.accelX = -0.5
-	} else if e.moveRight {
+		e.AccelX = -0.5
+	} else if e.MoveRight {
 		e.SetState(ENTITY_STATE_RIGHT)
-		e.accelX = 0.5
+		e.AccelX = 0.5
+	}
+}
+
+func (e *Entity) UpdatePosition() {
+	if e.Flags & ENTITY_FLAG_GRAVITY != 0 {
+		e.AccelY = .75
 	}
 
-	if e.flags & ENTITY_FLAG_GRAVITY != 0 {
-		e.accelY = .75
-	}
+	e.SpeedX += e.AccelX * fpsControl.GetSpeedFactor()
+	e.SpeedY += e.AccelY * fpsControl.GetSpeedFactor()
 
-	e.speedX += e.accelX * fpsControl.GetSpeedFactor()
-	e.speedY += e.accelY * fpsControl.GetSpeedFactor()
+	if e.SpeedX > e.MaxSpeedX { e.SpeedX = e.MaxSpeedX }
+	if e.SpeedX < -e.MaxSpeedX { e.SpeedX = -e.MaxSpeedX }
+	if e.SpeedY > e.MaxSpeedY { e.SpeedY = e.MaxSpeedY }
+	if e.SpeedY < -e.MaxSpeedY { e.SpeedY = -e.MaxSpeedY }
 
-	if e.speedX > e.maxSpeedX { e.speedX = e.maxSpeedX }
-	if e.speedX < -e.maxSpeedX { e.speedX = -e.maxSpeedX }
-	if e.speedY > e.maxSpeedY { e.speedY = e.maxSpeedY }
-	if e.speedY < -e.maxSpeedY { e.speedY = -e.maxSpeedY }
-
-	// e.Animate()
-	e.Move(e.speedX, e.speedY)
+	e.Move(e.SpeedX, e.SpeedY)
 }
 
 func (e *Entity) SetState(state int) {
-	var newState string
-	if state == ENTITY_STATE_RIGHT {
-		newState = "Player/Run"
-		e.Image.FlipHorizontal = false
+	newState := e.StateMap[state]
+	if !newState.InheritFlip {
+		e.Image.FlipHorizontal = newState.FlipHorizontal
+		e.Image.FlipVertical = newState.FlipVertical
 	}
-	if state == ENTITY_STATE_LEFT {
-		newState = "Player/Run"
-		e.Image.FlipHorizontal = true
-	}
-	if state == ENTITY_STATE_IDLE {
-		newState = "Player/Idle"
-	}
-	if state == ENTITY_STATE_JUMP {
-		newState = "Player/Fall-Jump-WallJ/Jump"
-	}
-	e.Image.SetAsset(newState)
-	e.CurrentState = state
+	e.Image.SetState(newState)
 }
 
 func (e *Entity) Move(moveX float32, moveY float32) {
@@ -156,7 +168,7 @@ func (e *Entity) Move(moveX float32, moveY float32) {
 	}
 
 	for {
-		if e.flags & ENTITY_FLAG_GHOST != 0 {
+		if e.Flags & ENTITY_FLAG_GHOST != 0 {
 			e.PosValid(int32(e.X + newX), int32(e.Y + newY))
 			e.X += newX
 			e.Y += newY
@@ -164,16 +176,17 @@ func (e *Entity) Move(moveX float32, moveY float32) {
 			if e.PosValid(int32(e.X + newX), int32(e.Y)) {
 				e.X += newX
 			} else {
-				e.speedX = 0
+				e.SpeedX = 0
 			}
 
 			if e.PosValid(int32(e.X), int32(e.Y + newY)) {
 				e.Y += newY
 			} else {
 				if moveY > 0 {
-					e.canJump = true
+					e.CanJump = true
+					e.IsJumping = false
 				}
-				e.speedY = 0
+				e.SpeedY = 0
 			}
 		}
 
@@ -195,24 +208,26 @@ func (e *Entity) Move(moveX float32, moveY float32) {
 }
 
 func (e *Entity) StopMove() {
-	if e.speedX > 0 {
-		e.accelX = -1
+	if e.SpeedX > 0 {
+		e.AccelX = -1
 	}
 
-	if e.speedX < 0 {
-		e.accelX = 1
+	if e.SpeedX < 0 {
+		e.AccelX = 1
 	}
 
-	if e.speedX < 2.0 && e.speedX > -2.0 {
-		e.accelX = 0
-		e.speedX = 0
+	if e.SpeedX < 2.0 && e.SpeedX > -2.0 {
+		e.AccelX = 0
+		e.SpeedX = 0
 	}
 }
 
 func (e *Entity) Jump() bool {
 	e.SetState(ENTITY_STATE_JUMP)
-	if !e.canJump { return false }
-	e.speedY = -e.maxSpeedY
+	if !e.CanJump { return false }
+	e.IsJumping = true
+	e.SpeedY = -e.MaxSpeedY
+	audioManager.PlaySoundEffect("jump.wav")
 	return true
 }
 
@@ -230,13 +245,13 @@ func (e *Entity) Collides(oX int32, oY int32, oW int32, oH int32) bool {
 	left1 = tX
 	left2 = oX
 
-	right1 = left1 + e.Image.W - 1//  - e.colWidth
+	right1 = left1 + e.Image.W - 1
 	right2 = oX + oW - 1
 
 	top1 = tY
 	top2 = oY
 
-	bottom1 = top1 + e.Image.H - 1//  - e.colHeight
+	bottom1 = top1 + e.Image.H - 1
 	bottom2 = oY + oH - 1
 
 	if bottom1 < top2 { return false }
@@ -265,7 +280,7 @@ func (e *Entity) PosValid(newX int32, newY int32) bool {
 		}
 	}
 
-	if e.flags & ENTITY_FLAG_MAPONLY != 0 {
+	if e.Flags & ENTITY_FLAG_MAPONLY != 0 {
 
 	} else {
 		for i := 0; i < len(EntityList); i++ {
@@ -287,17 +302,22 @@ func (e *Entity) PosValidTile(tile *Tile) bool {
 	return true
 }
 
-func (e *Entity) PosValidEntity(entity *Entity, newX int32, newY int32) bool {
+func (e *Entity) PosValidEntity(gameEntity GameEntity, newX int32, newY int32) bool {
+	entity := gameEntity.GetEntity()
 	if e != entity &&
 		entity != nil &&
-		!entity.dead &&
-		entity.flags ^ ENTITY_FLAG_MAPONLY == 0 &&
+		!entity.Dead &&
+		entity.Flags ^ ENTITY_FLAG_MAPONLY == 0 &&
 		entity.Collides(newX, newY, e.Image.W - 1, e.Image.H - 1) {
 		entityCollision := EntityCollision{}
 		EntityCollisionList = append(EntityCollisionList, entityCollision)
 		return false
 	}
 	return true
+}
+
+func (e *Entity) GetEntity() *Entity {
+	return e
 }
 
 func (e* Entity) Render() {

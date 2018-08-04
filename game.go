@@ -10,24 +10,7 @@ type Game struct {
 	running bool
 	renderer *sdl.Renderer
 	window *sdl.Window
-	keysHeld map[sdl.Keycode]bool
-	player *Entity
-}
-
-func (g *Game) Run() int {
-	if g.Init() == false {
-		return -1
-	}
-
-	g.window.UpdateSurface()
-	g.running = true
-	for g.running {
-		g.HandleInput()
-		g.Update()
-		g.Render()
-	}
-	g.Cleanup()
-	return 0
+	player *Player
 }
 
 func (g *Game) Init() bool {
@@ -57,53 +40,48 @@ func (g *Game) Init() bool {
 		return false
 	}
 
-	g.renderer.SetScale(1, 1)
+	g.renderer.SetScale(SCALE, SCALE)
+
+	audioManager.Init()
+	audioManager.PlayBgMusic("theme.mp3")
 
 	/*  DUMPING GROUND */
 	textureAtlas.Init()
-	g.player = NewPlayer()
+	g.player = NewPlayer(200, 200)
 	EntityList = append(EntityList, g.player)
 	mapControl.Load("testmap")
-	g.keysHeld = make(map[sdl.Keycode]bool)
 	cameraControl.targetMode = TARGET_MODE_CENTER
-	cameraControl.SetTarget(&g.player.X, &g.player.Y)
+	cameraControl.SetTarget(g.player)
 	/*  DUMPING GROUND */
 	return true
 }
 
-func (g *Game) HandleInput() {
-	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
-		g.Event(event)
+func (g *Game) Run() int {
+	if g.Init() == false {
+		return -1
 	}
+
+	g.window.UpdateSurface()
+	g.running = true
+	for g.running {
+		g.HandleEvents()
+		g.Update()
+		g.Render()
+	}
+	g.Cleanup()
+	return 0
 }
 
-func (g *Game) Event(e sdl.Event) {
-	switch t := e.(type) {
-	case *sdl.QuitEvent:
-		g.running = false
-		break
-	case *sdl.KeyboardEvent:
-		sym := e.(*sdl.KeyboardEvent).Keysym.Sym
-		if t.State == sdl.PRESSED {
-			g.keysHeld[sym] = true
-			if sym == sdl.K_LEFT {
-				g.player.moveLeft = true
-			}
-			if sym == sdl.K_RIGHT {
-				g.player.moveRight = true
-			}
-			if sym == sdl.K_SPACE {
-				g.player.Jump()
-			}
-		}
-		if t.State == sdl.RELEASED {
-			g.keysHeld[sym] = false
-			if sym == sdl.K_LEFT {
-				g.player.moveLeft = false
-			}
-			if sym == sdl.K_RIGHT {
-				g.player.moveRight = false
-			}
+func (g *Game) HandleEvents() {
+	for e := sdl.PollEvent(); e != nil; e = sdl.PollEvent() {
+		switch t := e.(type) {
+		case *sdl.QuitEvent:
+			g.running = false
+			break
+		case *sdl.KeyboardEvent:
+			inputManager.OnKeyboardEvent(e.(*sdl.KeyboardEvent))
+			sym := e.(*sdl.KeyboardEvent).Keysym.Sym
+			inputManager.KeysHeld[sym] = t.State == sdl.PRESSED
 		}
 	}
 }
@@ -125,7 +103,7 @@ func (g *Game) Update() {
 	}
 	EntityCollisionList = nil
 
-	cameraControl.Update(g.keysHeld)
+	// cameraControl.Update(inputManager.KeysHeld)
 }
 
 func (g *Game) Render() {
@@ -142,6 +120,7 @@ func (g *Game) Cleanup() {
 		entity.Cleanup()
 	}
 	mapControl.Cleanup()
+	textureAtlas.Cleanup()
 	g.renderer.Destroy()
 	g.window.Destroy()
 	sdl.Quit()

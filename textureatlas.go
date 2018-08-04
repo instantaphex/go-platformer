@@ -55,3 +55,7 @@ func (ta *TextureAtlas) LoadTexture() {
 func (ta *TextureAtlas) Get(asset string) []AnimationFrame {
 	return ta.Images[asset]
 }
+
+func (ta *TextureAtlas) Cleanup() {
+	ta.Texture.Destroy()
+}
