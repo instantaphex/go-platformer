@@ -13,10 +13,6 @@ type TextureAtlas struct {
 	Images map[string][]AnimationFrame `json:"frames"`
 }
 
-type AnimationFrames struct {
-	Images map[string][]AnimationFrame `json:"frames"`
-}
-
 type AnimationFrame struct {
 	X int32 `json:"x"`
 	Y int32 `json:"y"`

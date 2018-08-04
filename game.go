@@ -34,7 +34,7 @@ func (g *Game) Init() bool {
 		return false
 	}
 
-	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED)
+	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED | sdl.RENDERER_PRESENTVSYNC)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create rederer: %s\n", err)
 		return false
@@ -82,6 +82,9 @@ func (g *Game) HandleEvents() {
 			inputManager.OnKeyboardEvent(e.(*sdl.KeyboardEvent))
 			sym := e.(*sdl.KeyboardEvent).Keysym.Sym
 			inputManager.KeysHeld[sym] = t.State == sdl.PRESSED
+			if sym == sdl.K_q {
+				g.running = false
+			}
 		}
 	}
 }
@@ -102,8 +105,6 @@ func (g *Game) Update() {
 		}
 	}
 	EntityCollisionList = nil
-
-	// cameraControl.Update(inputManager.KeysHeld)
 }
 
 func (g *Game) Render() {
@@ -119,8 +120,11 @@ func (g *Game) Cleanup() {
 	for _, entity := range EntityList {
 		entity.Cleanup()
 	}
+
 	mapControl.Cleanup()
 	textureAtlas.Cleanup()
+	audioManager.Cleanup()
+
 	g.renderer.Destroy()
 	g.window.Destroy()
 	sdl.Quit()

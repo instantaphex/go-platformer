@@ -2,12 +2,15 @@
 //
 // Sprite sheet:  ( x )
 //
-// $TexturePacker:SmartUpdate:199b71ffd0a370ca5e821670ecb46ace:95d513e17206d24f385bac2f3a034b03:fab6845eb55fa95c274fdcd5aba8663e$
+// $TexturePacker:SmartUpdate:2d53f75f9344e6b9e5b3e6b7ef87ddc0:95d513e17206d24f385bac2f3a034b03:fab6845eb55fa95c274fdcd5aba8663e$
 
 module.exports = {
 	"sprites": {
 			"0": {
-				"frame": {"x": 1, "y": 1, "w": 16, "h": 16 },
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -15,7 +18,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"1": {
-				"frame": {"x": 19, "y": 1, "w": 16, "h": 16 },
+				"x": 0,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -23,7 +29,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"10": {
-				"frame": {"x": 37, "y": 1, "w": 16, "h": 16 },
+				"x": 0,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -31,7 +40,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"11": {
-				"frame": {"x": 55, "y": 1, "w": 16, "h": 16 },
+				"x": 0,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -39,7 +51,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"12": {
-				"frame": {"x": 73, "y": 1, "w": 16, "h": 16 },
+				"x": 16,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -47,7 +62,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"13": {
-				"frame": {"x": 91, "y": 1, "w": 16, "h": 16 },
+				"x": 16,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -55,7 +73,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"14": {
-				"frame": {"x": 109, "y": 1, "w": 16, "h": 16 },
+				"x": 16,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -63,7 +84,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"15": {
-				"frame": {"x": 127, "y": 1, "w": 16, "h": 16 },
+				"x": 16,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -71,7 +95,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"16": {
-				"frame": {"x": 145, "y": 1, "w": 16, "h": 16 },
+				"x": 32,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -79,7 +106,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"17": {
-				"frame": {"x": 163, "y": 1, "w": 16, "h": 16 },
+				"x": 32,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -87,7 +117,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"18": {
-				"frame": {"x": 181, "y": 1, "w": 16, "h": 16 },
+				"x": 32,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -95,7 +128,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"19": {
-				"frame": {"x": 199, "y": 1, "w": 16, "h": 16 },
+				"x": 32,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -103,7 +139,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"2": {
-				"frame": {"x": 217, "y": 1, "w": 16, "h": 16 },
+				"x": 48,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -111,7 +150,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"20": {
-				"frame": {"x": 235, "y": 1, "w": 16, "h": 16 },
+				"x": 48,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -119,7 +161,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"21": {
-				"frame": {"x": 1, "y": 19, "w": 16, "h": 16 },
+				"x": 48,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -127,7 +172,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"22": {
-				"frame": {"x": 19, "y": 19, "w": 16, "h": 16 },
+				"x": 48,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -135,7 +183,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"23": {
-				"frame": {"x": 37, "y": 19, "w": 16, "h": 16 },
+				"x": 64,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -143,7 +194,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"24": {
-				"frame": {"x": 55, "y": 19, "w": 16, "h": 16 },
+				"x": 64,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -151,7 +205,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"25": {
-				"frame": {"x": 73, "y": 19, "w": 16, "h": 16 },
+				"x": 64,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -159,7 +216,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"26": {
-				"frame": {"x": 91, "y": 19, "w": 16, "h": 16 },
+				"x": 64,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -167,7 +227,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"27": {
-				"frame": {"x": 109, "y": 19, "w": 16, "h": 16 },
+				"x": 80,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -175,7 +238,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"28": {
-				"frame": {"x": 127, "y": 19, "w": 16, "h": 16 },
+				"x": 80,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -183,7 +249,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"29": {
-				"frame": {"x": 145, "y": 19, "w": 16, "h": 16 },
+				"x": 80,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -191,7 +260,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"3": {
-				"frame": {"x": 163, "y": 19, "w": 16, "h": 16 },
+				"x": 80,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -199,7 +271,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"30": {
-				"frame": {"x": 181, "y": 19, "w": 16, "h": 16 },
+				"x": 96,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -207,7 +282,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"31": {
-				"frame": {"x": 199, "y": 19, "w": 16, "h": 16 },
+				"x": 96,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -215,7 +293,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"32": {
-				"frame": {"x": 217, "y": 19, "w": 16, "h": 16 },
+				"x": 96,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -223,7 +304,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"33": {
-				"frame": {"x": 235, "y": 19, "w": 16, "h": 16 },
+				"x": 96,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -231,7 +315,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"34": {
-				"frame": {"x": 1, "y": 37, "w": 16, "h": 16 },
+				"x": 112,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -239,7 +326,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"35": {
-				"frame": {"x": 19, "y": 37, "w": 16, "h": 16 },
+				"x": 112,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -247,7 +337,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"36": {
-				"frame": {"x": 37, "y": 37, "w": 16, "h": 16 },
+				"x": 112,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -255,7 +348,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"37": {
-				"frame": {"x": 55, "y": 37, "w": 16, "h": 16 },
+				"x": 112,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -263,7 +359,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"38": {
-				"frame": {"x": 73, "y": 37, "w": 16, "h": 16 },
+				"x": 128,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -271,7 +370,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"39": {
-				"frame": {"x": 91, "y": 37, "w": 16, "h": 16 },
+				"x": 128,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -279,7 +381,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"4": {
-				"frame": {"x": 109, "y": 37, "w": 16, "h": 16 },
+				"x": 128,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -287,7 +392,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"40": {
-				"frame": {"x": 127, "y": 37, "w": 16, "h": 16 },
+				"x": 128,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -295,7 +403,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"41": {
-				"frame": {"x": 145, "y": 37, "w": 16, "h": 16 },
+				"x": 144,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -303,7 +414,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"5": {
-				"frame": {"x": 163, "y": 37, "w": 16, "h": 16 },
+				"x": 144,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -311,7 +425,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"6": {
-				"frame": {"x": 181, "y": 37, "w": 16, "h": 16 },
+				"x": 144,
+				"y": 32,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -319,7 +436,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"7": {
-				"frame": {"x": 199, "y": 37, "w": 16, "h": 16 },
+				"x": 144,
+				"y": 48,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -327,7 +447,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"8": {
-				"frame": {"x": 217, "y": 37, "w": 16, "h": 16 },
+				"x": 160,
+				"y": 0,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
@@ -335,7 +458,10 @@ module.exports = {
 				"sourceH": 16
 			},
 			"9": {
-				"frame": {"x": 235, "y": 37, "w": 16, "h": 16 },
+				"x": 160,
+				"y": 16,
+				"w": 16,
+				"h": 16,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,

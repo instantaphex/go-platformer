@@ -35,7 +35,7 @@ func (c *Camera) GetX() float32 {
 func (c *Camera) GetY() float32 {
 	if c.targetY != nil {
 		if c.targetMode == TARGET_MODE_CENTER {
-			return *c.targetY - ((WHEIGHT / (2 * SCALE)) + 100)
+			return *c.targetY - ((WHEIGHT / (2 * SCALE)) + 150)
 		}
 		return *c.targetY
 	}
@@ -47,27 +47,10 @@ func (c *Camera) SetPos(x float32, y float32) {
 	c.y = y
 }
 
-/*func (c *Camera) SetTarget(x *float32, y *float32) {
-	c.targetX = x
-	c.targetY = y
-}*/
-
 func (c *Camera) SetTarget(entity GameEntity) {
 	c.targetX = &entity.GetEntity().X
 	c.targetY = &entity.GetEntity().Y
 }
 
 func (c *Camera) Update(keysHeld map[sdl.Keycode]bool) {
-	/*if keysHeld[sdl.K_UP] {
-		cameraControl.Move(0, 1)
-	}
-	if keysHeld[sdl.K_DOWN] {
-		cameraControl.Move(0, -1)
-	}
-	if keysHeld[sdl.K_LEFT] {
-		cameraControl.Move(1, 0)
-	}
-	if keysHeld[sdl.K_RIGHT] {
-		cameraControl.Move(-1, 0)
-	}*/
 }

@@ -53,7 +53,6 @@ type Entity struct {
 	MoveLeft bool
 	MoveRight bool
 	Dead bool
-	CanJump bool
 
 	EntityType int
 
@@ -85,7 +84,7 @@ func NewEntity(stateMap map[int]EntityState, x, y int32) *Entity {
 		SpeedY: 0,
 		AccelX: 0,
 		AccelY: 0,
-		MaxSpeedX: 5,
+		MaxSpeedX: 3,
 		MaxSpeedY: 8,
 		StateMap: stateMap,
 	}
@@ -97,27 +96,27 @@ func (e* Entity) Update() {
 }
 
 func (e *Entity) UpdateState() {
-	if e.IsJumping {
-		e.SetState(ENTITY_STATE_JUMP)
-		return
-	}
-
 	if !e.MoveLeft && !e.MoveRight {
 		e.SetState(ENTITY_STATE_IDLE)
 		e.StopMove()
 	}
 	if e.MoveLeft {
 		e.SetState(ENTITY_STATE_LEFT)
-		e.AccelX = -0.5
+		e.AccelX = -0.2
 	} else if e.MoveRight {
 		e.SetState(ENTITY_STATE_RIGHT)
-		e.AccelX = 0.5
+		e.AccelX = 0.2
+	}
+
+	if e.IsJumping {
+		e.SetState(ENTITY_STATE_JUMP)
+		return
 	}
 }
 
 func (e *Entity) UpdatePosition() {
 	if e.Flags & ENTITY_FLAG_GRAVITY != 0 {
-		e.AccelY = .75
+		e.AccelY = .55
 	}
 
 	e.SpeedX += e.AccelX * fpsControl.GetSpeedFactor()
@@ -182,11 +181,10 @@ func (e *Entity) Move(moveX float32, moveY float32) {
 			if e.PosValid(int32(e.X), int32(e.Y + newY)) {
 				e.Y += newY
 			} else {
+				e.SpeedY = 0
 				if moveY > 0 {
-					e.CanJump = true
 					e.IsJumping = false
 				}
-				e.SpeedY = 0
 			}
 		}
 
@@ -209,14 +207,14 @@ func (e *Entity) Move(moveX float32, moveY float32) {
 
 func (e *Entity) StopMove() {
 	if e.SpeedX > 0 {
-		e.AccelX = -1
+		e.AccelX = -.5
 	}
 
 	if e.SpeedX < 0 {
-		e.AccelX = 1
+		e.AccelX = .5
 	}
 
-	if e.SpeedX < 2.0 && e.SpeedX > -2.0 {
+	if e.SpeedX < .2 && e.SpeedX > -.2 {
 		e.AccelX = 0
 		e.SpeedX = 0
 	}
@@ -224,7 +222,6 @@ func (e *Entity) StopMove() {
 
 func (e *Entity) Jump() bool {
 	e.SetState(ENTITY_STATE_JUMP)
-	if !e.CanJump { return false }
 	e.IsJumping = true
 	e.SpeedY = -e.MaxSpeedY
 	audioManager.PlaySoundEffect("jump.wav")
