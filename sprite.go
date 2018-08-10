@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/veandco/go-sdl2/sdl"
+	"fmt"
 )
 
 type Renderable interface {
@@ -38,6 +39,10 @@ func (s *Sprite) Render(x, y int32) {
 	currentFrameIdx := s.animation.GetCurrentFrame()
 	if currentFrameIdx > len(s.frames) - 1 {
 		currentFrameIdx = 0
+	}
+	if len(s.frames) == 0 {
+		fmt.Println("For some reason this sprite has no frames")
+		return
 	}
 	frame := s.frames[currentFrameIdx]
 	xOffset := frame.SourceW - frame.W

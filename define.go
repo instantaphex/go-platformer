@@ -6,5 +6,5 @@ const (
 	TILE_SIZE = 16
 	WWIDTH = 1024
 	WHEIGHT = 768
-	SCALE = 2.5
+	SCALE = 2
 )

@@ -29,5 +29,9 @@ func (f *Fps) GetFps() uint32 {
 }
 
 func (f *Fps) GetSpeedFactor() float32 {
-	return f.speedFactor
+	if f.speedFactor < 8 {
+		return f.speedFactor
+	} else {
+		return 0
+	}
 }

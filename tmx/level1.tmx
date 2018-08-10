@@ -1,159 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="42" columns="0">
-  <grid orientation="orthogonal" width="1" height="1"/>
-  <tile id="0">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/0.png"/>
-  </tile>
-  <tile id="1">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/1.png"/>
-  </tile>
-  <tile id="2">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/2.png"/>
-  </tile>
-  <tile id="3">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/3.png"/>
-  </tile>
-  <tile id="4">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/4.png"/>
-  </tile>
-  <tile id="5">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/5.png"/>
-  </tile>
-  <tile id="6">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/6.png"/>
-  </tile>
-  <tile id="7">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/7.png"/>
-  </tile>
-  <tile id="8">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/8.png"/>
-  </tile>
-  <tile id="9">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/9.png"/>
-  </tile>
-  <tile id="10">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/10.png"/>
-  </tile>
-  <tile id="11">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/11.png"/>
-  </tile>
-  <tile id="12">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/12.png"/>
-  </tile>
-  <tile id="13">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/13.png"/>
-  </tile>
-  <tile id="14">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/14.png"/>
-  </tile>
-  <tile id="15">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/15.png"/>
-  </tile>
-  <tile id="16">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/16.png"/>
-  </tile>
-  <tile id="17">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/17.png"/>
-  </tile>
-  <tile id="18">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/18.png"/>
-  </tile>
-  <tile id="19">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/19.png"/>
-  </tile>
-  <tile id="20">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/20.png"/>
-  </tile>
-  <tile id="21">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/21.png"/>
-  </tile>
-  <tile id="22">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/22.png"/>
-  </tile>
-  <tile id="23">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/23.png"/>
-  </tile>
-  <tile id="24">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/24.png"/>
-  </tile>
-  <tile id="25">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/25.png"/>
-  </tile>
-  <tile id="26">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/26.png"/>
-  </tile>
-  <tile id="27">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/27.png"/>
-  </tile>
-  <tile id="28">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/28.png"/>
-  </tile>
-  <tile id="29">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/29.png"/>
-  </tile>
-  <tile id="30">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/30.png"/>
-  </tile>
-  <tile id="31">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/31.png"/>
-  </tile>
-  <tile id="32">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/32.png"/>
-  </tile>
-  <tile id="33">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/33.png"/>
-  </tile>
-  <tile id="34">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/34.png"/>
-  </tile>
-  <tile id="35">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/35.png"/>
-  </tile>
-  <tile id="36">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/36.png"/>
-  </tile>
-  <tile id="37">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/37.png"/>
-  </tile>
-  <tile id="38">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/38.png"/>
-  </tile>
-  <tile id="39">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/39.png"/>
-  </tile>
-  <tile id="40">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/40.png"/>
-  </tile>
-  <tile id="41">
-   <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/41.png"/>
-  </tile>
- </tileset>
- <tileset firstgid="43" name="tilemap" tilewidth="16" tileheight="16" tilecount="49" columns="15">
-  <image source="../tilesets/tilemap.png" width="252" height="54"/>
- </tileset>
- <layer name="Tile Layer 1" width="20" height="20">
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" infinite="0" nextobjectid="9">
+ <tileset firstgid="1" source="../tilesets/tilemap.tsx"/>
+ <tileset firstgid="36" source="../tilesets/game-objects.tsx"/>
+ <layer name="map" width="40" height="40">
   <data encoding="csv">
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,9,9,9,9,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,9,9,9,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,9,9,9,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
-5,33,33,33,33,33,33,9,33,33,33,33,33,33,33,33,33,33,33,35
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,
+1,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 </data>
  </layer>
+ <objectgroup name="objects">
+  <object id="3" type="coin" gid="36" x="323" y="408" width="8" height="8"/>
+  <object id="4" type="heart" gid="37" x="339" y="408" width="10" height="9"/>
+  <object id="5" type="coin" gid="36" x="419" y="360" width="8" height="8"/>
+  <object id="6" type="heart" gid="37" x="435" y="360" width="10" height="9"/>
+  <object id="7" type="coin" gid="36" x="515" y="552" width="8" height="8"/>
+  <object id="8" type="heart" gid="37" x="611" y="616" width="10" height="9"/>
+ </objectgroup>
 </map>

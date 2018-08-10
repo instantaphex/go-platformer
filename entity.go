@@ -229,7 +229,6 @@ func (e *Entity) Jump() bool {
 }
 
 func (e *Entity) OnCollision(entity *Entity) bool {
-	e.Jump()
 	return true
 }
 
@@ -302,14 +301,15 @@ func (e *Entity) PosValidTile(tile *Tile) bool {
 func (e *Entity) PosValidEntity(gameEntity GameEntity, newX int32, newY int32) bool {
 	entity := gameEntity.GetEntity()
 	if e != entity &&
-		entity != nil &&
-		!entity.Dead &&
-		entity.Flags ^ ENTITY_FLAG_MAPONLY == 0 &&
-		entity.Collides(newX, newY, e.Image.W - 1, e.Image.H - 1) {
-		entityCollision := EntityCollision{}
+	   entity != nil &&
+	   !entity.Dead &&
+	   entity.Flags & ENTITY_FLAG_MAPONLY == 0 &&
+	   entity.Collides(newX, newY, e.Image.W - 1, e.Image.H - 1) {
+		entityCollision := EntityCollision{entityA: entity, entityB: e}
 		EntityCollisionList = append(EntityCollisionList, entityCollision)
 		return false
 	}
+
 	return true
 }
 

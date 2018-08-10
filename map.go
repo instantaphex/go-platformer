@@ -4,10 +4,6 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 	"fmt"
 	"os"
-	"io/ioutil"
-	"encoding/xml"
-	"strings"
-	"strconv"
 )
 
 type Map struct {
@@ -20,8 +16,8 @@ type Map struct {
 
 func (m *Map) Load(mapName string) error {
 	var err error
-
-	tmx, err := m.openTmx(mapName)
+	path := fileManager.GetPath("tmx", mapName, "tmx")
+	tmx, err := NewTmxMap(path) // m.openTmx(mapName)
 	if err != nil {
 		return err
 	}
@@ -38,7 +34,26 @@ func (m *Map) Load(mapName string) error {
 	m.Width = int32(tmx.Width)
 	m.TileSize = int32(tmx.TileWidth)
 
-	for _, v := range tmx.Layers[0].Data.ParsedData {
+	layer, err := tmx.GetLayerByName("map")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	group, err := tmx.GetObjGroupByName("objects")
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println(group)
+	}
+	for _, obj := range group.Objects {
+		if obj.Type == "coin" {
+			EntityList = append(EntityList, NewCoin(int32(obj.X), int32(obj.Y)))
+		}
+		if obj.Type == "heart" {
+			EntityList = append(EntityList, NewHeart(int32(obj.X), int32(obj.Y)))
+		}
+	}
+
+	for _, v := range layer.Data.ParsedData {
 		var tileId, typeId int32
 		if v == 0 {
 			typeId = TILE_TYPE_NONE
@@ -104,35 +119,3 @@ func (m *Map) Cleanup() {
 	m.Texture.Destroy()
 }
 
-func (m Map) openTmx(filename string) (TmxMap, error) {
-	path := fileManager.GetPath("tmx", filename, "tmx")
-	f, err := ioutil.ReadFile(path)
-
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to read tmx file: %s\n", err)
-	}
-
-	parsed, err := m.ParseTmx(f)
-	return parsed, err
-}
-
-func (m Map) ParseTmx(b []byte) (TmxMap, error) {
-	var parsed TmxMap
-	err := xml.Unmarshal(b, &parsed)
-
-	for i, v := range parsed.Layers {
-		str := strings.Replace(v.Data.Value, "\n", "", -1)
-		arr := strings.Split(str, ",")
-		var converted []int
-		for _, v := range arr {
-			num, err := strconv.Atoi(v)
-			if err != nil {
-				panic(err)
-			}
-			converted = append(converted, num)
-		}
-		parsed.Layers[i].Data.ParsedData = converted
-	}
-
-	return parsed, err
-}

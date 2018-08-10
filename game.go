@@ -34,7 +34,7 @@ func (g *Game) Init() bool {
 		return false
 	}
 
-	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED | sdl.RENDERER_PRESENTVSYNC)
+	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create rederer: %s\n", err)
 		return false
@@ -47,10 +47,12 @@ func (g *Game) Init() bool {
 
 	/*  DUMPING GROUND */
 	textureAtlas.Init()
-	g.player = NewPlayer(200, 200)
-	EntityList = append(EntityList, g.player)
-	mapControl.Load("testmap")
+	mapControl.Load("level1")
 	cameraControl.targetMode = TARGET_MODE_CENTER
+	g.player = NewPlayer(200, 200)
+
+	EntityList = append(EntityList, g.player)
+	EntityList = append(EntityList, NewCoin(400, 400))
 	cameraControl.SetTarget(g.player)
 	/*  DUMPING GROUND */
 	return true
@@ -109,10 +111,10 @@ func (g *Game) Update() {
 
 func (g *Game) Render() {
 	g.renderer.Clear()
-	mapControl.Render(int32(-cameraControl.GetX()), int32(-cameraControl.GetY()))
 	for _, entity := range EntityList {
 		entity.Render()
 	}
+	mapControl.Render(int32(-cameraControl.GetX()), int32(-cameraControl.GetY()))
 	g.renderer.Present()
 }
 
