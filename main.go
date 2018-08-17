@@ -1,5 +1,7 @@
 package main
 
+import "github.com/instantaphex/platformer/engine"
+
 var game = Game{}
 var gfx = Graphics{}
 var EntityList []GameEntity
@@ -13,5 +15,12 @@ var audioManager = AudioManager{}
 var inputManager = NewInputManager()
 
 func main() {
-	game.Run()
+	// game.Run()
+	eng := engine.New(engine.EngineConfig{
+		WindowWidth: 1024,
+		WindowHeight: 768,
+		WindowTitle: "Platformer",
+		Scale: 2,
+	})
+	eng.Run()
 }
