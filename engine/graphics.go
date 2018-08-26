@@ -30,13 +30,21 @@ func (g *Graphics) Draw(texture *sdl.Texture, x int32, y int32) {
 }
 
 func (g *Graphics) DrawPart(texture *sdl.Texture, x int32, y int32, clipX int32, clipY int32, w int32, h int32, flip ...sdl.RendererFlip) {
+	/*x = x + w / 2
+	y = y + h / 2*/
 	src := sdl.Rect{clipX, clipY, w, h}
 	dst := sdl.Rect{x, y, w, h}
-	// r.Copy(texture, &src, &dst)
 	renderFlip := sdl.FLIP_NONE
 	if (len(flip) > 0) {
 		renderFlip = flip[0]
 	}
 	g.engine.renderer.CopyEx(texture, &src, &dst, 0.0, nil, renderFlip)
+}
+
+func (g *Graphics) DrawRectOutline(x, y, w, h int32) {
+	outline := sdl.Rect{x, y, w, h }
+	g.engine.renderer.SetDrawColor(255, 0, 0, 255)
+	g.engine.renderer.DrawRect(&outline)
+	g.engine.renderer.SetDrawColor(0, 0, 0, 255)
 }
 

@@ -20,7 +20,7 @@ func main() {
 		WindowWidth: 1024,
 		WindowHeight: 768,
 		WindowTitle: "Platformer",
-		Scale: 2,
+		Scale: 2.5,
 	})
 	eng.Run()
 }

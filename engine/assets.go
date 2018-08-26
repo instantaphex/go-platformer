@@ -23,6 +23,18 @@ type AnimationFrame struct {
 	SourceY int32 `json:"sourceY"`
 	SourceW int32 `json:"sourceW"`
 	SourceH int32 `json:"sourceH"`
+	CenterOffset struct {
+		X float64 `json:"x"`
+		Y float64 `json:"y"`
+	} `json:"centerOffset"`
+	PivotPoint struct {
+		X float64 `json:"x"`
+		Y float64 `json:"y"`
+	} `json:"pivotPoint"`
+	PivotPointNorm struct {
+		X float64 `json:"x"`
+		Y float64 `json:"y"`
+	} `json:"pivotPointNorm"`
 	Rotated bool `json:"rotated"`
 }
 
@@ -38,7 +50,10 @@ func (ta* TextureAtlas) LoadAssetJson() {
 	}
 	defer jsonFile.Close()
 	byteValue, _ := ioutil.ReadAll(jsonFile)
-	json.Unmarshal(byteValue, ta)
+	err = json.Unmarshal(byteValue, ta)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func (ta *TextureAtlas) LoadTexture() {

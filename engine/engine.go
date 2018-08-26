@@ -82,14 +82,13 @@ func (g *Engine) Init() error {
 
 	/* DUMPING GROUND */
 	g.World = World{}
-	g.World.RegisterSystem(InputSystem{})
-	g.World.RegisterSystem(StateSystem{})
+	g.World.RegisterSystem(&InputSystem{})
+	g.World.RegisterSystem(&AnimationSystem{})
+	g.World.RegisterSystem(&StateSystem{})
 	g.World.RegisterSystem(&MovementSystem{})
 	g.World.RegisterSystem(&CameraSystem{})
-	g.World.RegisterSystem(AnimationSystem{})
-	g.World.RegisterSystem(RenderSystem{})
+	g.World.RegisterSystem(&RenderSystem{})
 	g.World.CreatePlayer(g, 100, 0)
-	g.World.CreateStaticPlayer(g, 132, 0)
 	g.Map.Load("level1")
 	/* DUMPING GROUND */
 

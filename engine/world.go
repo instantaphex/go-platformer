@@ -14,9 +14,9 @@ type World struct {
 	velocity [ENTITY_COUNT]Velocity
 	appearance [ENTITY_COUNT]Appearance
 	animation [ENTITY_COUNT]Animation
-	controllable [ENTITY_COUNT]Controllable
 	focused [ENTITY_COUNT]Focused
 	state [ENTITY_COUNT]State
+	collider [ENTITY_COUNT]Collider
 	systems []System
 }
 
@@ -33,7 +33,6 @@ func (w *World) Update(engine *Engine) {
 func (w *World) CreateEntity() int {
 	for entity := 0; entity < ENTITY_COUNT; entity++ {
 		if w.mask[entity] == COMPONENT_NONE {
-			// fmt.Fprintf(os.Stdout, "Entity created: %d\n", entity)
 			return entity
 		}
 	}
@@ -49,7 +48,7 @@ func (w *World) DestroyEntity(entity uint64) {
 
 func (w *World) CreatePlayer(engine *Engine, x, y float32) int {
 	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_CONTROLLABLE|COMPONENT_FOCUSED|COMPONENT_STATE
+	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_COLLIDER
 
 	w.position[entity].x = x
 	w.position[entity].y = y
@@ -60,38 +59,61 @@ func (w *World) CreatePlayer(engine *Engine, x, y float32) int {
 	w.animation[entity].frameRate = 200
 	w.animation[entity].frameInc = 1
 
-	w.velocity[entity].maxSpeedY = 8
-	w.velocity[entity].maxSpeedX = 2
+	w.velocity[entity].maxSpeedY = 5
+	w.velocity[entity].maxSpeedX = 2.2
 
-	w.controllable[entity].canJump = true
+	w.collider[entity].w = 9
+	w.collider[entity].h = 14
 
-	w.state[entity].currentState = ENTITY_STATE_IDLE
-	w.state[entity].stateMap = make(map[EntityStateKey]EntityState)
-	w.state[entity].stateMap[ENTITY_STATE_IDLE] = EntityState{ asset: "Player/Idle", flip:  sdl.FLIP_NONE, inheritFlip: true, frameRate: 200 }
-	w.state[entity].stateMap[ENTITY_STATE_LEFT] = EntityState{ asset: "Player/Run", flip: sdl.FLIP_HORIZONTAL, inheritFlip: false, frameRate: 60 }
-	w.state[entity].stateMap[ENTITY_STATE_RIGHT] = EntityState{ asset: "Player/Run", flip: sdl.FLIP_NONE, inheritFlip: false, frameRate: 60 }
-	w.state[entity].stateMap[ENTITY_STATE_JUMP] = EntityState{ asset: "Player/Fall-Jump-WallJ/Jump", flip: sdl.FLIP_NONE, inheritFlip: true, frameRate: 200 }
+	w.state[entity].canJump = true
 
+	w.state[entity].currentAnimKey = ENTITY_STATE_IDLE
 
-	return entity
-}
+	w.state[entity].animationStates = make(map[AnimationStateKey]AnimationState)
+	w.state[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
+		asset: "Player/Idle",
+		flip:  sdl.FLIP_NONE,
+		frameRate: 200,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
+	w.state[entity].animationStates[ENTITY_STATE_LEFT] = AnimationState{
+		asset: "Player/Run",
+		flip: sdl.FLIP_HORIZONTAL,
+		frameRate: 60,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
+	w.state[entity].animationStates[ENTITY_STATE_RIGHT] = AnimationState{
+		asset: "Player/Run",
+		flip: sdl.FLIP_NONE,
+		frameRate: 60,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
+	w.state[entity].animationStates[ENTITY_STATE_JUMP] = AnimationState{
+		asset: "Player/Fall-Jump-WallJ/Jump",
+		flip: sdl.FLIP_NONE,
+		frameRate: 0,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
 
-func (w *World) CreateStaticPlayer(engine *Engine, x, y float32) int {
-	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY
+	w.state[entity].animationStates[ENTITY_STATE_ROLL] = AnimationState{
+		asset: "Player/Roll",
+		flip: sdl.FLIP_NONE,
+		frameRate: 150,
+		infinite: false,
+		orientation: ORIENTATION_RIGHT,
+	}
 
-	w.position[entity].x = x
-	w.position[entity].y = y
-
-	w.appearance[entity].name = "Player/Idle"
-
-	w.animation[entity].maxFrames = len(engine.Assets.Get("Player/Idle"))
-	w.animation[entity].frameRate = 200
-	w.animation[entity].frameInc = 1
-
-	w.velocity[entity].maxSpeedY = 8
-	w.velocity[entity].maxSpeedX = 3
-
+	w.state[entity].animationStates[ENTITY_STATE_SHOOT] = AnimationState{
+		asset: "Player/Bow",
+		flip: sdl.FLIP_NONE,
+		frameRate: 150,
+		infinite: false,
+		orientation: ORIENTATION_RIGHT,
+	}
 
 	return entity
 }

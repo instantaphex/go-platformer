@@ -19,112 +19,141 @@ func signatureMatches(mask, signature uint64) bool {
 
 type StateSystem struct {}
 
-func (ss StateSystem) Update(engine *Engine, world *World) {
-	var ap *Appearance
-	var stateCmp *State
-
+func (ss *StateSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, COMPONENT_APPEARANCE|COMPONENT_STATE) {
-			ap = &(world.appearance[entity])
-			stateCmp = &(world.state[entity])
-
-			state := stateCmp.stateMap[stateCmp.currentState]
-			ap.name = state.asset
-			if !state.inheritFlip {
-				ap.flip = state.flip
+			ap := &(world.appearance[entity])
+			stateCmp := &(world.state[entity])
+			stateCmp.animationState = stateCmp.animationStates[stateCmp.currentAnimKey]
+			if stateCmp.currentAnimKey != stateCmp.desiredAnimKey {
+				stateCmp.newState = true
+				stateCmp.currentAnimKey = stateCmp.desiredAnimKey
+				stateCmp.animationState = stateCmp.animationStates[stateCmp.currentAnimKey]
 			}
-			ap.inheritFlip = state.inheritFlip
+
+			ap.name = stateCmp.animationState.asset
+			if stateCmp.orientation != stateCmp.animationState.orientation {
+				ap.flip = sdl.FLIP_HORIZONTAL
+			} else {
+				ap.flip = sdl.FLIP_NONE
+			}
 		}
 	}
+}
+
+type ColliderSystem struct {}
+
+func (cs *ColliderSystem) Update(engine *Engine, world *World) {
+	/*for entity, mask := range world.mask {
+		if signatureMatches(mask, COMPONENT_COLLIDER|COMPONENT_APPEARANCE) {
+			apCmp := &(world.appearance[entity])
+			colCmp := &(world.collider[entity])
+
+			colCmp.
+		}
+	}*/
 }
 
 type RenderSystem struct {
 	signature int64
 }
-func (rs RenderSystem) Update (engine *Engine, world *World) {
-	var pos *Position
-	var a *Appearance
-
+func (rs *RenderSystem) Update (engine *Engine, world *World) {
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, RENDER_MASK) {
-			pos = &(world.position[entity])
-			a = &(world.appearance[entity])
-
-			// apply offset for different sized sprites as well
-			// as accounting for camera position
-			x := int32(pos.x - engine.Camera.X()) + a.xOffset
-			y := int32(pos.y - engine.Camera.Y()) + a.yOffset
-			engine.Graphics.DrawPart(engine.Assets.Texture, x, y, a.frame.X, a.frame.Y, a.frame.W, a.frame.H, a.flip)
+			pos := &(world.position[entity])
+			a := &(world.appearance[entity])
+			x := int32(pos.x - engine.Camera.X())
+			y := int32((pos.y) - engine.Camera.Y())
+			offsetX := x - int32(a.frame.PivotPoint.X / 2)
+			offsetY := y - int32(a.frame.PivotPoint.Y / 2)
+			if signatureMatches(mask, COMPONENT_COLLIDER) {
+				col := &(world.collider[entity])
+				engine.Graphics.DrawRectOutline(x, y, col.w, col.h)
+			}
+			// engine.Graphics.DrawRectOutline(x, y, a.w, a.h)
+			engine.Graphics.DrawPart(engine.Assets.Texture, offsetX, offsetY, a.frame.X, a.frame.Y, a.frame.W, a.frame.H, a.flip)
 		}
 	}
 }
 
 type AnimationSystem struct {}
 
-func (as AnimationSystem) Update(engine *Engine, world *World) {
-	var an *Animation
-	var ap *Appearance
-	var state *State
+func (as *AnimationSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, COMPONENT_ANIMATION|COMPONENT_APPEARANCE|COMPONENT_STATE) {
-			an = &(world.animation[entity])
-			ap = &(world.appearance[entity])
-			state = &(world.state[entity])
+			animationCmp := &(world.animation[entity])
+			appearanceCmp := &(world.appearance[entity])
+			stateCmp := &(world.state[entity])
 
-			if an.oldTime + uint32(an.frameRate) > sdl.GetTicks() {
-				return
-			}
-			an.oldTime = sdl.GetTicks()
-			an.currentFrame += an.frameInc
-			if an.currentFrame >= an.maxFrames {
-				an.currentFrame = 0
+			// determine if we are transitioning to a new state
+			// or keeping the current state.  Transitioning to
+			// a new state should reset the frame counter to 0
+			if stateCmp.newState {
+				animationCmp.currentFrame = 0
+				stateCmp.newState = false
 			}
 
 			// get animation frame array
-			state := state.stateMap[state.currentState]
-			frames := engine.Assets.Get(state.asset)
-			an.maxFrames = len(frames)
-			an.frameRate = state.frameRate
-			an.frameInc = 1
+			frames := engine.Assets.Get(stateCmp.animationState.asset)
+			animationCmp.maxFrames = len(frames) - 1
+			animationCmp.frameRate = stateCmp.animationState.frameRate
+			animationCmp.frameInc = 1
 			if len(frames) == 0 { return }
-
-			// if the animation we're switching to has less
-			// frames than the current animation frame, reset it
-			if an.currentFrame > len(frames) - 1 {
-				an.currentFrame = 0
-			}
 
 			// calculate offset to be used in rendering to account
 			// for different sized sprite frames
-			ap.frame = frames[an.currentFrame]
-			ap.xOffset = ap.frame.SourceW - ap.frame.W
-			ap.yOffset = ap.frame.SourceH - ap.frame.H
-			ap.w = ap.frame.W + ap.xOffset
-			ap.h = ap.frame.H + ap.yOffset
+			lastFrameIdx := animationCmp.currentFrame - 1
+			if lastFrameIdx < 0 {
+				lastFrameIdx = len(frames) - 1
+			}
+			appearanceCmp.frame = frames[animationCmp.currentFrame]
+
+			// advance frames
+			if animationCmp.oldTime + uint32(animationCmp.frameRate) > sdl.GetTicks() {
+				return
+			}
+			animationCmp.oldTime = sdl.GetTicks()
+			animationCmp.currentFrame += animationCmp.frameInc
+			if animationCmp.currentFrame >= animationCmp.maxFrames {
+				animationCmp.currentFrame = 0
+			}
 		}
 	}
 }
 
 type InputSystem struct {}
-func (cs InputSystem) Update(engine *Engine, world *World) {
-	var c *Controllable
-	var s *State
+func (is *InputSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
-		if signatureMatches(mask, COMPONENT_CONTROLLABLE) {
-			c = &(world.controllable[entity])
-			s = &(world.state[entity])
-			c.moveRight = engine.Input.KeysHeld[sdl.K_RIGHT] || engine.Input.KeysHeld[sdl.K_d]
-			c.moveLeft = engine.Input.KeysHeld[sdl.K_LEFT] || engine.Input.KeysHeld[sdl.K_a]
-			if c.moveLeft {
-				s.currentState = ENTITY_STATE_LEFT
-			} else if c.moveRight {
-				s.currentState = ENTITY_STATE_RIGHT
+		if signatureMatches(mask, COMPONENT_STATE) {
+			s := &(world.state[entity])
+
+			s.moveRight = engine.Input.KeysHeld[sdl.K_RIGHT] || engine.Input.KeysHeld[sdl.K_d]
+			s.moveLeft = engine.Input.KeysHeld[sdl.K_LEFT] || engine.Input.KeysHeld[sdl.K_a]
+			s.rolling = (engine.Input.KeysHeld[sdl.K_DOWN] || engine.Input.KeysHeld[sdl.K_s]) && s.grounded
+			s.shooting = engine.Input.KeysHeld[sdl.K_RSHIFT]
+
+			if s.moveLeft {
+				s.desiredAnimKey = ENTITY_STATE_LEFT
+				s.orientation = ORIENTATION_LEFT
+			} else if s.moveRight {
+				s.desiredAnimKey = ENTITY_STATE_RIGHT
+				s.orientation = ORIENTATION_RIGHT
 			} else {
-				s.currentState = ENTITY_STATE_IDLE
+				s.desiredAnimKey = ENTITY_STATE_IDLE
+			}
+			if s.rolling {
+				s.desiredAnimKey = ENTITY_STATE_ROLL
+			}
+			if s.jumping {
+				s.desiredAnimKey = ENTITY_STATE_JUMP
+			}
+			if s.shooting {
+				s.desiredAnimKey = ENTITY_STATE_SHOOT
 			}
 			if engine.Input.KeysHeld[sdl.K_SPACE] {
-				s.currentState = ENTITY_STATE_JUMP
-				c.jumping = true
+				s.jumping = true
+			} else {
+				s.canJump = true
 			}
 		}
 	}
@@ -133,34 +162,45 @@ func (cs InputSystem) Update(engine *Engine, world *World) {
 type MovementSystem struct {
 	v *Velocity
 	pos *Position
-	c *Controllable
+	stateCmp *State
 	a *Appearance
+	col *Collider
 	engine *Engine
 }
 func (ms *MovementSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
-		if signatureMatches(mask, COMPONENT_VELOCITY|COMPONENT_POSITION|COMPONENT_APPEARANCE) {
+		if signatureMatches(mask, COMPONENT_VELOCITY|COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_STATE|COMPONENT_COLLIDER) {
 			ms.v = &(world.velocity[entity])
 			ms.pos = &(world.position[entity])
-			ms.c = &(world.controllable[entity])
+			ms.stateCmp = &(world.state[entity])
 			ms.a = &(world.appearance[entity])
+			ms.col = &(world.collider[entity])
 			ms.engine = engine
 
-			if !ms.c.moveLeft && !ms.c.moveRight {
+			if !ms.stateCmp.moveLeft && !ms.stateCmp.moveRight {
 				ms.StopMove()
 			}
-			if ms.c.moveLeft {
+			if ms.stateCmp.moveLeft {
 				ms.v.accelX = -0.2
-			} else if ms.c.moveRight {
+			} else if ms.stateCmp.moveRight {
 				ms.v.accelX = 0.2
 			}
 
-			if ms.c.jumping && ms.c.canJump {
+			if ms.stateCmp.grounded && ms.stateCmp.jumping && ms.stateCmp.canJump {
 				ms.v.speedY = -ms.v.maxSpeedY
-				ms.c.canJump = false
+				ms.stateCmp.canJump = false
+				ms.stateCmp.grounded = false
 			}
 
-			ms.v.accelY = .55
+			if ms.stateCmp.rolling {
+				if ms.stateCmp.orientation == ORIENTATION_LEFT {
+					ms.v.accelX = -2
+				} else if ms.stateCmp.orientation == ORIENTATION_RIGHT {
+					ms.v.accelX = 2
+				}
+			}
+
+			ms.v.accelY = .25
 			/*if e.Flags & ENTITY_FLAG_GRAVITY != 0 {
 				e.AccelY = .55
 			}*/
@@ -168,10 +208,18 @@ func (ms *MovementSystem) Update(engine *Engine, world *World) {
 			ms.v.speedX += ms.v.accelX * engine.FPS.GetSpeedFactor()
 			ms.v.speedY += ms.v.accelY * engine.FPS.GetSpeedFactor()
 
-			if ms.v.speedX > ms.v.maxSpeedX { ms.v.speedX = ms.v.maxSpeedX }
-			if ms.v.speedX < -ms.v.maxSpeedX { ms.v.speedX = -ms.v.maxSpeedX }
-			if ms.v.speedY > ms.v.maxSpeedY { ms.v.speedY = ms.v.maxSpeedY }
-			if ms.v.speedY < -ms.v.maxSpeedY { ms.v.speedY = -ms.v.maxSpeedY }
+			var maxSpeedX, maxSpeedY float32
+			if !ms.stateCmp.rolling {
+				maxSpeedX = ms.v.maxSpeedX
+				maxSpeedY = ms.v.maxSpeedY
+			} else {
+				maxSpeedX = ms.v.maxSpeedX + 2
+				maxSpeedY = ms.v.maxSpeedY + 2
+			}
+			if ms.v.speedX > ms.v.maxSpeedX { ms.v.speedX = maxSpeedX }
+			if ms.v.speedX < -ms.v.maxSpeedX { ms.v.speedX = -maxSpeedX }
+			if ms.v.speedY > ms.v.maxSpeedY { ms.v.speedY = maxSpeedY }
+			if ms.v.speedY < -ms.v.maxSpeedY { ms.v.speedY = -maxSpeedY }
 
 			ms.Move(ms.v.speedX, ms.v.speedY)
 		}
@@ -215,7 +263,7 @@ func (ms *MovementSystem) Move(moveX, moveY float32) {
 			// no collision, update position
 			ms.pos.x += newX
 		} else {
-			// collision deteced, set speed to zero so we don't allow the movement
+			// collision detected, set speed to zero so we don't allow the movement
 			ms.v.speedX = 0
 		}
 
@@ -224,12 +272,12 @@ func (ms *MovementSystem) Move(moveX, moveY float32) {
 			// no collision, update position
 			ms.pos.y += newY
 		} else {
-			// collision deteced, set speed to zero so we don't allow the movement
+			// collision detected, set speed to zero so we don't allow the movement
 			ms.v.speedY = 0
 			if moveY > 0 {
 				// reset jump flags
-				ms.c.canJump = true
-				ms.c.jumping = false
+				ms.stateCmp.grounded = true
+				ms.stateCmp.jumping = false
 			}
 		}
 
@@ -256,14 +304,14 @@ func (ms *MovementSystem) Move(moveX, moveY float32) {
 
 func (ms *MovementSystem) StopMove() {
 	if ms.v.speedX > 0 {
-		ms.v.accelX = -.5
+		ms.v.accelX = -.3
 	}
 
 	if ms.v.speedX < 0 {
-		ms.v.accelX = .5
+		ms.v.accelX = .3
 	}
 
-	if ms.v.speedX < .2 && ms.v.speedX > -.2 {
+	if ms.v.speedX < .18 && ms.v.speedX > -.18 {
 		ms.v.accelX = 0
 		ms.v.speedX = 0
 	}
@@ -275,8 +323,10 @@ func (ms *MovementSystem) PosValid(newX int32, newY int32) bool {
 	startX := (newX) / TILE_SIZE
 	startY := (newY) / TILE_SIZE
 
-	endX := ((newX) + ms.a.w - 1) / TILE_SIZE
-	endY := ((newY) + ms.a.h - 1) / TILE_SIZE
+	// endX := ((newX) + ms.a.w - 1) / TILE_SIZE
+	// endY := ((newY) + ms.a.h - 1) / TILE_SIZE
+	endX := ((newX) + ms.col.w - 1) / TILE_SIZE
+	endY := ((newY) + ms.col.h - 1) / TILE_SIZE
 
 	for iY := startY; iY <= endY; iY++ {
 		for iX := startX; iX <= endX; iX++ {
@@ -327,10 +377,9 @@ func (e *MovementSystem) PosValidTile(tile *Tile) bool {
 type CameraSystem struct {}
 
 func (cs *CameraSystem) Update(engine *Engine, world *World) {
-	var pos *Position
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, COMPONENT_FOCUSED) {
-			pos = &(world.position[entity])
+			pos := &(world.position[entity])
 			engine.Camera.SetTarget(&pos.x, &pos.y)
 		}
 	}
