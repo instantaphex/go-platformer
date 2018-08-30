@@ -8,7 +8,7 @@ import (
 
 type Engine struct {
 	running bool
-	World World
+	World *World
 	renderer *sdl.Renderer
 	window *sdl.Window
 
@@ -28,6 +28,7 @@ type EngineConfig struct {
 	WindowHeight int32
 	WindowTitle string
 	Scale float32
+	DrawDebug bool
 }
 
 func New(cfg EngineConfig) *Engine {
@@ -69,7 +70,7 @@ func (g *Engine) Init() error {
 		return err
 	}
 
-	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED)
+	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED|sdl.RENDERER_PRESENTVSYNC)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create rederer: %s\n", err)
 		return err
@@ -81,15 +82,20 @@ func (g *Engine) Init() error {
 	g.Audio.Init()
 
 	/* DUMPING GROUND */
-	g.World = World{}
+	g.World = &World{}
+	g.World.RegisterSystem(&CameraSystem{})
 	g.World.RegisterSystem(&InputSystem{})
 	g.World.RegisterSystem(&AnimationSystem{})
 	g.World.RegisterSystem(&StateSystem{})
+	g.World.RegisterSystem(&VelocitySystem{})
 	g.World.RegisterSystem(&MovementSystem{})
-	g.World.RegisterSystem(&CameraSystem{})
+
+	// order matters here
+	g.World.RegisterSystem(&MapRenderSystem{})
 	g.World.RegisterSystem(&RenderSystem{})
+
 	g.World.CreatePlayer(g, 100, 0)
-	g.Map.Load("level1")
+	g.Map.Load("level1", g.World)
 	/* DUMPING GROUND */
 
 	return nil
@@ -125,7 +131,6 @@ func (g *Engine) HandleEvents() {
 func (g *Engine) Update() {
 	g.FPS.Update()
 	g.renderer.Clear()
-	g.Map.Render(int32(-g.Camera.X()), int32(-g.Camera.Y()))
 	g.World.Update(g)
 	g.renderer.Present()
 }

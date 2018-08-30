@@ -42,7 +42,7 @@ func (g *Graphics) DrawPart(texture *sdl.Texture, x int32, y int32, clipX int32,
 }
 
 func (g *Graphics) DrawRectOutline(x, y, w, h int32) {
-	outline := sdl.Rect{x, y, w, h }
+	outline := sdl.Rect{X: x, Y: y, W: w, H: h}
 	g.engine.renderer.SetDrawColor(255, 0, 0, 255)
 	g.engine.renderer.DrawRect(&outline)
 	g.engine.renderer.SetDrawColor(0, 0, 0, 255)

@@ -8,9 +8,10 @@ const (
 	COMPONENT_VELOCITY = 1 << 1
 	COMPONENT_APPEARANCE = 1 << 2
 	COMPONENT_ANIMATION = 1 << 3
-	COMPONENT_FOCUSED = 1 << 5
-	COMPONENT_STATE = 1 << 6
+	COMPONENT_FOCUSED = 1 << 4
+	COMPONENT_STATE = 1 << 5
 	COMPONENT_COLLIDER = 1 << 6
+	COMPONENT_CONTROLLER = 1 << 7
 )
 
 const (
@@ -76,6 +77,18 @@ type State struct {
 	currentAnimKey AnimationStateKey
 	desiredAnimKey AnimationStateKey
 	animationState AnimationState
+	jumping bool
+	canJump bool
+	grounded bool
+	newState bool
+	moveRight bool
+	moveLeft bool
+	rolling bool
+	shooting bool
+	orientation Orientation
+}
+
+type Controller struct {
 	jumping bool
 	canJump bool
 	grounded bool

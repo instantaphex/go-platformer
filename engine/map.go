@@ -26,7 +26,7 @@ type Tile struct {
 	TypeID int32
 }
 
-func (m *Map) Load(mapName string) error {
+func (m *Map) Load(mapName string, world *World) error {
 	var err error
 	path := m.engine.File.GetPath("tmx", mapName, "tmx")
 	tmx, err := NewTmxMap(path) // m.openTmx(mapName)
@@ -56,14 +56,14 @@ func (m *Map) Load(mapName string) error {
 		fmt.Println(err)
 		fmt.Println(group)
 	}
-	/*for _, obj := range group.Objects {
+	for _, obj := range group.Objects {
 		if obj.Type == "coin" {
-			EntityList = append(EntityList, NewCoin(int32(obj.X), int32(obj.Y)))
+			world.CreateCoin(m.engine, float32(obj.X), float32(obj.Y))
 		}
 		if obj.Type == "heart" {
-			EntityList = append(EntityList, NewHeart(int32(obj.X), int32(obj.Y)))
+			world.CreateHeart(m.engine, float32(obj.X), float32(obj.Y))
 		}
-	}*/
+	}
 
 	for _, v := range layer.Data.ParsedData {
 		var tileId, typeId int32

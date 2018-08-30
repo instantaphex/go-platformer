@@ -2,8 +2,8 @@
   "frames": {
     "Decoration/Fly": [
       {
-        "x": 497,
-        "y": 107,
+        "x": 396,
+        "y": 29,
         "w": 9,
         "h": 9,
         "rotated": false,
@@ -25,8 +25,8 @@
         }
       },
       {
-        "x": 327,
-        "y": 181,
+        "x": 363,
+        "y": 106,
         "w": 9,
         "h": 9,
         "rotated": false,
@@ -48,8 +48,8 @@
         }
       },
       {
-        "x": 80,
-        "y": 205,
+        "x": 32,
+        "y": 243,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -73,7 +73,7 @@
     ],
     "Decoration/Torch/torch": [
       {
-        "x": 397,
+        "x": 344,
         "y": 69,
         "w": 7,
         "h": 22,
@@ -98,8 +98,8 @@
     ],
     "Decoration/Torch/torch_fireorange": [
       {
-        "x": 483,
-        "y": 29,
+        "x": 389,
+        "y": 126,
         "w": 1,
         "h": 1,
         "rotated": false,
@@ -123,8 +123,8 @@
     ],
     "Decoration/Torch/torch_fireyellow": [
       {
-        "x": 77,
-        "y": 169,
+        "x": 390,
+        "y": 168,
         "w": 1,
         "h": 1,
         "rotated": false,
@@ -148,8 +148,8 @@
     ],
     "Decoration/grass-sheet0": [
       {
-        "x": 397,
-        "y": 93,
+        "x": 1,
+        "y": 233,
         "w": 11,
         "h": 20,
         "rotated": false,
@@ -173,8 +173,8 @@
     ],
     "Decoration/grass_flowers": [
       {
-        "x": 454,
-        "y": 37,
+        "x": 317,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -198,8 +198,8 @@
     ],
     "Decoration/grass_plain": [
       {
-        "x": 472,
-        "y": 37,
+        "x": 317,
+        "y": 189,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -222,6 +222,56 @@
       }
     ],
     "Decoration/light": [
+      {
+        "x": 1,
+        "y": 167,
+        "w": 64,
+        "h": 64,
+        "rotated": false,
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceW": 64,
+        "sourceH": 64,
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "pivotPoint": {
+          "x": 32,
+          "y": 32
+        },
+        "pivotPointNorm": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    ],
+    "Decoration/rock": [
+      {
+        "x": 14,
+        "y": 243,
+        "w": 16,
+        "h": 6,
+        "rotated": false,
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceW": 16,
+        "sourceH": 6,
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "pivotPoint": {
+          "x": 8,
+          "y": 3
+        },
+        "pivotPointNorm": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    ],
+    "Decoration/tiled_bg": [
       {
         "x": 67,
         "y": 37,
@@ -246,60 +296,10 @@
         }
       }
     ],
-    "Decoration/rock": [
-      {
-        "x": 465,
-        "y": 29,
-        "w": 16,
-        "h": 6,
-        "rotated": false,
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceW": 16,
-        "sourceH": 6,
-        "centerOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "pivotPoint": {
-          "x": 8,
-          "y": 3
-        },
-        "pivotPointNorm": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      }
-    ],
-    "Decoration/tiled_bg": [
-      {
-        "x": 133,
-        "y": 37,
-        "w": 64,
-        "h": 64,
-        "rotated": false,
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceW": 64,
-        "sourceH": 64,
-        "centerOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "pivotPoint": {
-          "x": 32,
-          "y": 32
-        },
-        "pivotPointNorm": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      }
-    ],
     "Enemy/Bat/Go": [
       {
-        "x": 490,
-        "y": 32,
+        "x": 317,
+        "y": 207,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -321,8 +321,8 @@
         }
       },
       {
-        "x": 490,
-        "y": 50,
+        "x": 338,
+        "y": 117,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -346,8 +346,8 @@
     ],
     "Enemy/Bat/Sleep-Hit/Hit": [
       {
-        "x": 194,
-        "y": 187,
+        "x": 336,
+        "y": 135,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -371,8 +371,8 @@
     ],
     "Enemy/Bat/Sleep-Hit/Sleep": [
       {
-        "x": 213,
-        "y": 169,
+        "x": 336,
+        "y": 153,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -396,8 +396,8 @@
     ],
     "Enemy/PatrolGuy/Go": [
       {
-        "x": 212,
-        "y": 187,
+        "x": 335,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -419,8 +419,8 @@
         }
       },
       {
-        "x": 231,
-        "y": 169,
+        "x": 335,
+        "y": 189,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -442,8 +442,8 @@
         }
       },
       {
-        "x": 230,
-        "y": 187,
+        "x": 335,
+        "y": 207,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -465,8 +465,8 @@
         }
       },
       {
-        "x": 212,
-        "y": 187,
+        "x": 335,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -488,8 +488,8 @@
         }
       },
       {
-        "x": 349,
-        "y": 177,
+        "x": 317,
+        "y": 225,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -511,8 +511,8 @@
         }
       },
       {
-        "x": 426,
-        "y": 55,
+        "x": 335,
+        "y": 225,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -536,8 +536,8 @@
     ],
     "Enemy/PatrolGuy/Hit": [
       {
-        "x": 444,
-        "y": 55,
+        "x": 360,
+        "y": 29,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -561,8 +561,8 @@
     ],
     "Enemy/Slime/GO": [
       {
-        "x": 462,
-        "y": 55,
+        "x": 378,
+        "y": 29,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -584,8 +584,8 @@
         }
       },
       {
-        "x": 420,
-        "y": 73,
+        "x": 354,
+        "y": 47,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -607,8 +607,8 @@
         }
       },
       {
-        "x": 438,
-        "y": 73,
+        "x": 372,
+        "y": 47,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -630,8 +630,8 @@
         }
       },
       {
-        "x": 456,
-        "y": 73,
+        "x": 396,
+        "y": 40,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -653,8 +653,8 @@
         }
       },
       {
-        "x": 424,
-        "y": 91,
+        "x": 356,
+        "y": 117,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -678,8 +678,8 @@
     ],
     "Enemy/Slime/Hit": [
       {
-        "x": 442,
-        "y": 91,
+        "x": 354,
+        "y": 135,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -703,8 +703,8 @@
     ],
     "Items/Coin/Shine": [
       {
-        "x": 90,
-        "y": 205,
+        "x": 344,
+        "y": 93,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -726,8 +726,8 @@
         }
       },
       {
-        "x": 100,
-        "y": 205,
+        "x": 417,
+        "y": 106,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -749,8 +749,8 @@
         }
       },
       {
-        "x": 110,
-        "y": 205,
+        "x": 417,
+        "y": 116,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -772,8 +772,8 @@
         }
       },
       {
-        "x": 120,
-        "y": 205,
+        "x": 417,
+        "y": 126,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -795,8 +795,8 @@
         }
       },
       {
-        "x": 130,
-        "y": 205,
+        "x": 392,
+        "y": 126,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -818,8 +818,8 @@
         }
       },
       {
-        "x": 140,
-        "y": 205,
+        "x": 407,
+        "y": 241,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -841,8 +841,8 @@
         }
       },
       {
-        "x": 150,
-        "y": 205,
+        "x": 417,
+        "y": 241,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -864,8 +864,8 @@
         }
       },
       {
-        "x": 160,
-        "y": 205,
+        "x": 308,
+        "y": 243,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -889,8 +889,8 @@
     ],
     "Items/Coin/Spin": [
       {
-        "x": 90,
-        "y": 205,
+        "x": 344,
+        "y": 93,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -912,8 +912,8 @@
         }
       },
       {
-        "x": 170,
-        "y": 205,
+        "x": 318,
+        "y": 243,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -935,8 +935,8 @@
         }
       },
       {
-        "x": 180,
-        "y": 205,
+        "x": 328,
+        "y": 243,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -958,8 +958,8 @@
         }
       },
       {
-        "x": 190,
-        "y": 205,
+        "x": 338,
+        "y": 243,
         "w": 8,
         "h": 8,
         "rotated": false,
@@ -983,22 +983,22 @@
     ],
     "Items/Heart/Pick heart": [
       {
-        "x": 496,
-        "y": 85,
-        "w": 10,
-        "h": 9,
+        "x": 253,
+        "y": 28,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1006,22 +1006,22 @@
         }
       },
       {
-        "x": 496,
-        "y": 96,
-        "w": 10,
-        "h": 9,
+        "x": 348,
+        "y": 243,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1029,22 +1029,22 @@
         }
       },
       {
-        "x": 65,
-        "y": 169,
-        "w": 10,
-        "h": 9,
+        "x": 358,
+        "y": 243,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1052,22 +1052,22 @@
         }
       },
       {
-        "x": 279,
-        "y": 181,
-        "w": 10,
-        "h": 9,
+        "x": 368,
+        "y": 243,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1075,22 +1075,22 @@
         }
       },
       {
-        "x": 291,
-        "y": 181,
-        "w": 10,
-        "h": 9,
+        "x": 378,
+        "y": 243,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1098,22 +1098,22 @@
         }
       },
       {
-        "x": 303,
-        "y": 181,
-        "w": 10,
-        "h": 9,
+        "x": 388,
+        "y": 243,
+        "w": 8,
+        "h": 7,
         "rotated": false,
         "sourceX": 0,
         "sourceY": 0,
-        "sourceW": 10,
-        "sourceH": 9,
+        "sourceW": 8,
+        "sourceH": 7,
         "centerOffset": {
           "x": 0,
           "y": 0
         },
         "pivotPoint": {
-          "x": 5,
-          "y": 4.5
+          "x": 4,
+          "y": 3.5
         },
         "pivotPointNorm": {
           "x": 0.5,
@@ -1123,8 +1123,8 @@
     ],
     "Items/Heart/heart-grey": [
       {
-        "x": 315,
-        "y": 181,
+        "x": 407,
+        "y": 208,
         "w": 10,
         "h": 9,
         "rotated": false,
@@ -1148,8 +1148,8 @@
     ],
     "Items/Heart/heart-red": [
       {
-        "x": 496,
-        "y": 85,
+        "x": 407,
+        "y": 219,
         "w": 10,
         "h": 9,
         "rotated": false,
@@ -1173,8 +1173,8 @@
     ],
     "Items/Heart/heart_white": [
       {
-        "x": 279,
-        "y": 181,
+        "x": 407,
+        "y": 230,
         "w": 10,
         "h": 9,
         "rotated": false,
@@ -1199,8 +1199,8 @@
     "Menu": [
       null,
       {
-        "x": 249,
-        "y": 169,
+        "x": 374,
+        "y": 96,
         "w": 13,
         "h": 15,
         "rotated": false,
@@ -1222,8 +1222,8 @@
         }
       },
       {
-        "x": 492,
-        "y": 68,
+        "x": 374,
+        "y": 113,
         "w": 13,
         "h": 15,
         "rotated": false,
@@ -1272,8 +1272,8 @@
     ],
     "Menu/Play": [
       {
-        "x": 360,
-        "y": 1,
+        "x": 265,
+        "y": 35,
         "w": 77,
         "h": 32,
         "rotated": false,
@@ -1372,8 +1372,8 @@
     ],
     "Menu/Video": [
       {
-        "x": 1,
-        "y": 181,
+        "x": 265,
+        "y": 69,
         "w": 77,
         "h": 32,
         "rotated": false,
@@ -1397,8 +1397,8 @@
     ],
     "Menu/navigation-1": [
       {
-        "x": 487,
-        "y": 163,
+        "x": 414,
+        "y": 40,
         "w": 11,
         "h": 15,
         "rotated": false,
@@ -1422,7 +1422,7 @@
     ],
     "Objects/Black Bars": [
       {
-        "x": 439,
+        "x": 360,
         "y": 1,
         "w": 45,
         "h": 26,
@@ -1448,8 +1448,8 @@
     "Objects/Blocks/Weak blocks": [
       null,
       {
-        "x": 45,
-        "y": 167,
+        "x": 407,
+        "y": 1,
         "w": 18,
         "h": 11,
         "rotated": false,
@@ -1471,8 +1471,8 @@
         }
       },
       {
-        "x": 377,
-        "y": 167,
+        "x": 407,
+        "y": 14,
         "w": 18,
         "h": 11,
         "rotated": false,
@@ -1496,8 +1496,8 @@
     ],
     "Objects/Blocks/Weak blocks/weak1": [
       {
-        "x": 486,
-        "y": 19,
+        "x": 407,
+        "y": 27,
         "w": 18,
         "h": 11,
         "rotated": false,
@@ -1521,8 +1521,8 @@
     ],
     "Objects/Blocks/Weak blocks/weak_part": [
       {
-        "x": 505,
-        "y": 7,
+        "x": 368,
+        "y": 93,
         "w": 1,
         "h": 1,
         "rotated": false,
@@ -1546,8 +1546,8 @@
     ],
     "Objects/Blocks/block-1": [
       {
-        "x": 460,
-        "y": 91,
+        "x": 354,
+        "y": 153,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -1571,8 +1571,8 @@
     ],
     "Objects/Blocks/block-2": [
       {
-        "x": 411,
-        "y": 133,
+        "x": 353,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -1596,8 +1596,8 @@
     ],
     "Objects/Bomb/bomb-hit": [
       {
-        "x": 17,
-        "y": 167,
+        "x": 349,
+        "y": 103,
         "w": 12,
         "h": 12,
         "rotated": false,
@@ -1621,8 +1621,8 @@
     ],
     "Objects/Bomb/bomb": [
       {
-        "x": 31,
-        "y": 167,
+        "x": 403,
+        "y": 122,
         "w": 12,
         "h": 12,
         "rotated": false,
@@ -1646,8 +1646,8 @@
     ],
     "Objects/BowObj": [
       {
-        "x": 426,
-        "y": 50,
+        "x": 374,
+        "y": 130,
         "w": 7,
         "h": 3,
         "rotated": false,
@@ -1669,8 +1669,8 @@
         }
       },
       {
-        "x": 407,
-        "y": 68,
+        "x": 383,
+        "y": 130,
         "w": 7,
         "h": 3,
         "rotated": false,
@@ -1694,8 +1694,8 @@
     ],
     "Objects/BowObj/bowline": [
       {
-        "x": 367,
-        "y": 177,
+        "x": 363,
+        "y": 103,
         "w": 2,
         "h": 1,
         "rotated": false,
@@ -1719,8 +1719,8 @@
     ],
     "Objects/Box/box": [
       {
-        "x": 489,
-        "y": 180,
+        "x": 414,
+        "y": 57,
         "w": 11,
         "h": 11,
         "rotated": false,
@@ -1744,8 +1744,8 @@
     ],
     "Objects/Box/hit": [
       {
-        "x": 416,
-        "y": 202,
+        "x": 374,
+        "y": 65,
         "w": 15,
         "h": 11,
         "rotated": false,
@@ -1769,8 +1769,8 @@
     ],
     "Objects/Mushroom": [
       {
-        "x": 367,
-        "y": 180,
+        "x": 257,
+        "y": 240,
         "w": 15,
         "h": 13,
         "rotated": false,
@@ -1792,8 +1792,8 @@
         }
       },
       {
-        "x": 384,
-        "y": 180,
+        "x": 274,
+        "y": 240,
         "w": 15,
         "h": 13,
         "rotated": false,
@@ -1815,8 +1815,8 @@
         }
       },
       {
-        "x": 416,
-        "y": 187,
+        "x": 291,
+        "y": 240,
         "w": 15,
         "h": 13,
         "rotated": false,
@@ -1838,8 +1838,8 @@
         }
       },
       {
-        "x": 367,
-        "y": 180,
+        "x": 257,
+        "y": 240,
         "w": 15,
         "h": 13,
         "rotated": false,
@@ -1864,7 +1864,7 @@
     "Objects/Platforms/bridge": [
       {
         "x": 265,
-        "y": 167,
+        "y": 103,
         "w": 82,
         "h": 12,
         "rotated": false,
@@ -1888,8 +1888,8 @@
     ],
     "Objects/Platforms/mov-platform1": [
       {
-        "x": 349,
-        "y": 167,
+        "x": 14,
+        "y": 233,
         "w": 26,
         "h": 8,
         "rotated": false,
@@ -1913,8 +1913,8 @@
     ],
     "Objects/Platforms/mov-platform2": [
       {
-        "x": 439,
-        "y": 29,
+        "x": 293,
+        "y": 117,
         "w": 24,
         "h": 6,
         "rotated": false,
@@ -1938,8 +1938,8 @@
     ],
     "Objects/Platforms/mov_string": [
       {
-        "x": 505,
-        "y": 1,
+        "x": 368,
+        "y": 87,
         "w": 1,
         "h": 4,
         "rotated": false,
@@ -1963,8 +1963,8 @@
     ],
     "Objects/Platforms/platform": [
       {
-        "x": 407,
-        "y": 35,
+        "x": 265,
+        "y": 117,
         "w": 26,
         "h": 13,
         "rotated": false,
@@ -1988,8 +1988,8 @@
     ],
     "Objects/Platforms/wheel": [
       {
-        "x": 500,
-        "y": 163,
+        "x": 284,
+        "y": 232,
         "w": 6,
         "h": 6,
         "rotated": false,
@@ -2037,7 +2037,76 @@
       },
       {
         "x": 133,
+        "y": 37,
+        "w": 64,
+        "h": 64,
+        "rotated": false,
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceW": 64,
+        "sourceH": 64,
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "pivotPoint": {
+          "x": 32,
+          "y": 32
+        },
+        "pivotPointNorm": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "x": 133,
         "y": 103,
+        "w": 64,
+        "h": 64,
+        "rotated": false,
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceW": 64,
+        "sourceH": 64,
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "pivotPoint": {
+          "x": 32,
+          "y": 32
+        },
+        "pivotPointNorm": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "x": 67,
+        "y": 169,
+        "w": 64,
+        "h": 64,
+        "rotated": false,
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceW": 64,
+        "sourceH": 64,
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "pivotPoint": {
+          "x": 32,
+          "y": 32
+        },
+        "pivotPointNorm": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "x": 133,
+        "y": 169,
         "w": 64,
         "h": 64,
         "rotated": false,
@@ -2105,77 +2174,8 @@
         }
       },
       {
-        "x": 265,
-        "y": 35,
-        "w": 64,
-        "h": 64,
-        "rotated": false,
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceW": 64,
-        "sourceH": 64,
-        "centerOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "pivotPoint": {
-          "x": 32,
-          "y": 32
-        },
-        "pivotPointNorm": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      {
-        "x": 265,
-        "y": 101,
-        "w": 64,
-        "h": 64,
-        "rotated": false,
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceW": 64,
-        "sourceH": 64,
-        "centerOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "pivotPoint": {
-          "x": 32,
-          "y": 32
-        },
-        "pivotPointNorm": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      {
-        "x": 331,
-        "y": 35,
-        "w": 64,
-        "h": 64,
-        "rotated": false,
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceW": 64,
-        "sourceH": 64,
-        "centerOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "pivotPoint": {
-          "x": 32,
-          "y": 32
-        },
-        "pivotPointNorm": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
-      {
-        "x": 331,
-        "y": 101,
+        "x": 199,
+        "y": 169,
         "w": 64,
         "h": 64,
         "rotated": false,
@@ -2199,8 +2199,8 @@
     ],
     "Objects/Treasure/treasure-hit": [
       {
-        "x": 489,
-        "y": 193,
+        "x": 407,
+        "y": 182,
         "w": 13,
         "h": 11,
         "rotated": false,
@@ -2224,8 +2224,8 @@
     ],
     "Objects/Treasure/treasure": [
       {
-        "x": 264,
-        "y": 181,
+        "x": 407,
+        "y": 195,
         "w": 13,
         "h": 11,
         "rotated": false,
@@ -2249,8 +2249,8 @@
     ],
     "Objects/Water/Splash1": [
       {
-        "x": 433,
-        "y": 181,
+        "x": 354,
+        "y": 87,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2272,8 +2272,8 @@
         }
       },
       {
-        "x": 433,
-        "y": 197,
+        "x": 389,
+        "y": 94,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2295,8 +2295,8 @@
         }
       },
       {
-        "x": 447,
-        "y": 181,
+        "x": 389,
+        "y": 110,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2318,8 +2318,8 @@
         }
       },
       {
-        "x": 447,
-        "y": 197,
+        "x": 403,
+        "y": 106,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2341,8 +2341,8 @@
         }
       },
       {
-        "x": 461,
-        "y": 181,
+        "x": 390,
+        "y": 136,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2364,8 +2364,8 @@
         }
       },
       {
-        "x": 461,
-        "y": 197,
+        "x": 390,
+        "y": 152,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2387,8 +2387,8 @@
         }
       },
       {
-        "x": 475,
-        "y": 181,
+        "x": 404,
+        "y": 136,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2410,8 +2410,8 @@
         }
       },
       {
-        "x": 475,
-        "y": 197,
+        "x": 404,
+        "y": 152,
         "w": 12,
         "h": 14,
         "rotated": false,
@@ -2433,8 +2433,8 @@
         }
       },
       {
-        "x": 1,
-        "y": 167,
+        "x": 407,
+        "y": 168,
         "w": 14,
         "h": 12,
         "rotated": false,
@@ -2458,8 +2458,8 @@
     ],
     "Objects/Water/tiled_water": [
       {
-        "x": 411,
-        "y": 151,
+        "x": 353,
+        "y": 189,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2483,8 +2483,8 @@
     ],
     "Objects/Water/water_bubble": [
       {
-        "x": 371,
-        "y": 177,
+        "x": 393,
+        "y": 168,
         "w": 1,
         "h": 1,
         "rotated": false,
@@ -2508,7 +2508,7 @@
     ],
     "Objects/Water/water_light": [
       {
-        "x": 397,
+        "x": 344,
         "y": 35,
         "w": 8,
         "h": 32,
@@ -2533,8 +2533,8 @@
     ],
     "Objects/Water/watertop": [
       {
-        "x": 253,
-        "y": 28,
+        "x": 354,
+        "y": 65,
         "w": 18,
         "h": 1,
         "rotated": false,
@@ -2558,8 +2558,8 @@
     ],
     "Objects/ice": [
       {
-        "x": 425,
-        "y": 109,
+        "x": 353,
+        "y": 207,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2583,8 +2583,8 @@
     ],
     "Objects/ladder": [
       {
-        "x": 443,
-        "y": 109,
+        "x": 353,
+        "y": 225,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2608,8 +2608,8 @@
     ],
     "Objects/spikes": [
       {
-        "x": 253,
-        "y": 31,
+        "x": 263,
+        "y": 28,
         "w": 8,
         "h": 4,
         "rotated": false,
@@ -2633,8 +2633,8 @@
     ],
     "Player/Blue-Red/Blue": [
       {
-        "x": 397,
-        "y": 115,
+        "x": 284,
+        "y": 132,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -2658,8 +2658,8 @@
     ],
     "Player/Blue-Red/Red": [
       {
-        "x": 397,
-        "y": 135,
+        "x": 284,
+        "y": 152,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -2683,8 +2683,8 @@
     ],
     "Player/Bow": [
       {
-        "x": 461,
-        "y": 109,
+        "x": 372,
+        "y": 135,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2706,8 +2706,8 @@
         }
       },
       {
-        "x": 429,
-        "y": 127,
+        "x": 372,
+        "y": 153,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2729,8 +2729,8 @@
         }
       },
       {
-        "x": 429,
-        "y": 145,
+        "x": 371,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2752,8 +2752,8 @@
         }
       },
       {
-        "x": 447,
-        "y": 127,
+        "x": 371,
+        "y": 189,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2775,8 +2775,8 @@
         }
       },
       {
-        "x": 447,
-        "y": 145,
+        "x": 371,
+        "y": 207,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2800,8 +2800,8 @@
     ],
     "Player/Climb": [
       {
-        "x": 397,
-        "y": 155,
+        "x": 284,
+        "y": 172,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -2823,8 +2823,8 @@
         }
       },
       {
-        "x": 248,
-        "y": 195,
+        "x": 284,
+        "y": 192,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -2848,8 +2848,8 @@
     ],
     "Player/Fall-Jump-WallJ/Fall": [
       {
-        "x": 486,
-        "y": 1,
+        "x": 265,
+        "y": 132,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -2873,8 +2873,8 @@
     ],
     "Player/Fall-Jump-WallJ/Jump": [
       {
-        "x": 407,
-        "y": 50,
+        "x": 265,
+        "y": 150,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -2898,8 +2898,8 @@
     ],
     "Player/Fall-Jump-WallJ/WallJ": [
       {
-        "x": 435,
-        "y": 37,
+        "x": 265,
+        "y": 168,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -2923,8 +2923,8 @@
     ],
     "Player/Hit": [
       {
-        "x": 465,
-        "y": 145,
+        "x": 391,
+        "y": 58,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2946,8 +2946,8 @@
         }
       },
       {
-        "x": 474,
-        "y": 73,
+        "x": 409,
+        "y": 70,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2969,8 +2969,8 @@
         }
       },
       {
-        "x": 478,
-        "y": 91,
+        "x": 391,
+        "y": 76,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -2992,8 +2992,8 @@
         }
       },
       {
-        "x": 479,
-        "y": 109,
+        "x": 409,
+        "y": 88,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3017,8 +3017,8 @@
     ],
     "Player/Idle": [
       {
-        "x": 80,
-        "y": 169,
+        "x": 265,
+        "y": 186,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3040,8 +3040,8 @@
         }
       },
       {
-        "x": 80,
-        "y": 187,
+        "x": 265,
+        "y": 204,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3063,8 +3063,8 @@
         }
       },
       {
-        "x": 99,
-        "y": 169,
+        "x": 265,
+        "y": 222,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3086,8 +3086,8 @@
         }
       },
       {
-        "x": 99,
-        "y": 187,
+        "x": 298,
+        "y": 125,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3111,8 +3111,8 @@
     ],
     "Player/Roll": [
       {
-        "x": 262,
-        "y": 195,
+        "x": 284,
+        "y": 212,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3134,8 +3134,8 @@
         }
       },
       {
-        "x": 276,
-        "y": 195,
+        "x": 61,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3157,8 +3157,8 @@
         }
       },
       {
-        "x": 290,
-        "y": 195,
+        "x": 75,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3180,8 +3180,8 @@
         }
       },
       {
-        "x": 304,
-        "y": 195,
+        "x": 89,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3203,8 +3203,8 @@
         }
       },
       {
-        "x": 318,
-        "y": 195,
+        "x": 103,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3228,8 +3228,8 @@
     ],
     "Player/Run": [
       {
-        "x": 118,
-        "y": 169,
+        "x": 298,
+        "y": 143,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3251,8 +3251,8 @@
         }
       },
       {
-        "x": 137,
-        "y": 169,
+        "x": 298,
+        "y": 179,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3274,8 +3274,8 @@
         }
       },
       {
-        "x": 137,
-        "y": 187,
+        "x": 298,
+        "y": 197,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3297,8 +3297,8 @@
         }
       },
       {
-        "x": 156,
-        "y": 169,
+        "x": 298,
+        "y": 215,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3320,8 +3320,8 @@
         }
       },
       {
-        "x": 156,
-        "y": 187,
+        "x": 42,
+        "y": 233,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3343,8 +3343,8 @@
         }
       },
       {
-        "x": 118,
-        "y": 169,
+        "x": 298,
+        "y": 143,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3366,8 +3366,8 @@
         }
       },
       {
-        "x": 175,
-        "y": 169,
+        "x": 319,
+        "y": 117,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3389,8 +3389,8 @@
         }
       },
       {
-        "x": 175,
-        "y": 187,
+        "x": 317,
+        "y": 135,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3412,8 +3412,8 @@
         }
       },
       {
-        "x": 194,
-        "y": 169,
+        "x": 317,
+        "y": 153,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3435,8 +3435,8 @@
         }
       },
       {
-        "x": 118,
-        "y": 187,
+        "x": 298,
+        "y": 161,
         "w": 17,
         "h": 16,
         "rotated": false,
@@ -3460,8 +3460,8 @@
     ],
     "Player/Underwater/Idle": [
       {
-        "x": 483,
-        "y": 127,
+        "x": 389,
+        "y": 171,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3483,8 +3483,8 @@
         }
       },
       {
-        "x": 483,
-        "y": 145,
+        "x": 389,
+        "y": 189,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3506,8 +3506,8 @@
         }
       },
       {
-        "x": 415,
-        "y": 169,
+        "x": 389,
+        "y": 207,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3529,8 +3529,8 @@
         }
       },
       {
-        "x": 433,
-        "y": 163,
+        "x": 389,
+        "y": 225,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3554,8 +3554,8 @@
     ],
     "Player/Underwater/Jump-Fall/Fall": [
       {
-        "x": 451,
-        "y": 163,
+        "x": 353,
+        "y": 69,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3579,8 +3579,8 @@
     ],
     "Player/Underwater/Jump-Fall/Jump": [
       {
-        "x": 469,
-        "y": 163,
+        "x": 371,
+        "y": 78,
         "w": 16,
         "h": 16,
         "rotated": false,
@@ -3604,8 +3604,8 @@
     ],
     "Player/Underwater/Run": [
       {
-        "x": 332,
-        "y": 195,
+        "x": 117,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3627,8 +3627,8 @@
         }
       },
       {
-        "x": 360,
-        "y": 195,
+        "x": 145,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3650,8 +3650,8 @@
         }
       },
       {
-        "x": 374,
-        "y": 195,
+        "x": 159,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3673,8 +3673,8 @@
         }
       },
       {
-        "x": 388,
-        "y": 195,
+        "x": 173,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3696,8 +3696,8 @@
         }
       },
       {
-        "x": 401,
-        "y": 175,
+        "x": 187,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3719,8 +3719,8 @@
         }
       },
       {
-        "x": 402,
-        "y": 195,
+        "x": 201,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3742,8 +3742,8 @@
         }
       },
       {
-        "x": 406,
-        "y": 73,
+        "x": 215,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3765,8 +3765,8 @@
         }
       },
       {
-        "x": 410,
-        "y": 93,
+        "x": 229,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3788,8 +3788,8 @@
         }
       },
       {
-        "x": 411,
-        "y": 113,
+        "x": 243,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3811,8 +3811,8 @@
         }
       },
       {
-        "x": 346,
-        "y": 195,
+        "x": 131,
+        "y": 235,
         "w": 12,
         "h": 18,
         "rotated": false,
@@ -3836,8 +3836,8 @@
     ],
     "Player/player_dust": [
       {
-        "x": 200,
-        "y": 205,
+        "x": 354,
+        "y": 35,
         "w": 4,
         "h": 4,
         "rotated": false,

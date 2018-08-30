@@ -4,13 +4,13 @@
 //
 // Sprite sheet:  ( x )
 //
-// $TexturePacker:SmartUpdate:0b4a25f9142dd65eab87fd5096dff5b6:8253132f16ba7cb55dc8948bbd8f2c42:5d6f6143cb0e5fb0e1b50e9e413aafd1$
+// $TexturePacker:SmartUpdate:76fa9f5803cd1e8de7eb9126202802e2:b4f1d140709c383c3d106ae2febde537:5d6f6143cb0e5fb0e1b50e9e413aafd1$
 
 module.exports = {
 	"sprites": {
 			"Decoration/Fly/1": {
-				"x": 497,
-				"y": 107,
+				"x": 396,
+				"y": 29,
 				"w": 9,
 				"h": 9,
 				"rotated": false,
@@ -23,8 +23,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/Fly/2": {
-				"x": 327,
-				"y": 181,
+				"x": 363,
+				"y": 106,
 				"w": 9,
 				"h": 9,
 				"rotated": false,
@@ -37,8 +37,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/Fly/3": {
-				"x": 80,
-				"y": 205,
+				"x": 32,
+				"y": 243,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -51,7 +51,7 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/Torch/torch": {
-				"x": 397,
+				"x": 344,
 				"y": 69,
 				"w": 7,
 				"h": 22,
@@ -65,8 +65,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/Torch/torch_fireorange": {
-				"x": 483,
-				"y": 29,
+				"x": 389,
+				"y": 126,
 				"w": 1,
 				"h": 1,
 				"rotated": false,
@@ -79,8 +79,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/Torch/torch_fireyellow": {
-				"x": 77,
-				"y": 169,
+				"x": 390,
+				"y": 168,
 				"w": 1,
 				"h": 1,
 				"rotated": false,
@@ -93,8 +93,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/grass-sheet0": {
-				"x": 397,
-				"y": 93,
+				"x": 1,
+				"y": 233,
 				"w": 11,
 				"h": 20,
 				"rotated": false,
@@ -107,8 +107,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/grass_flowers": {
-				"x": 454,
-				"y": 37,
+				"x": 317,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -121,8 +121,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/grass_plain": {
-				"x": 472,
-				"y": 37,
+				"x": 317,
+				"y": 189,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -135,6 +135,34 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Decoration/light": {
+				"x": 1,
+				"y": 167,
+				"w": 64,
+				"h": 64,
+				"rotated": false,
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceW": 64,
+				"sourceH": 64,
+				"centerOffset": { "x": 0, "y": 0 },
+				"pivotPoint": { "x": 32, "y": 32 },
+				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
+			},
+			"Decoration/rock": {
+				"x": 14,
+				"y": 243,
+				"w": 16,
+				"h": 6,
+				"rotated": false,
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceW": 16,
+				"sourceH": 6,
+				"centerOffset": { "x": 0, "y": 0 },
+				"pivotPoint": { "x": 8, "y": 3 },
+				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
+			},
+			"Decoration/tiled_bg": {
 				"x": 67,
 				"y": 37,
 				"w": 64,
@@ -148,37 +176,9 @@ module.exports = {
 				"pivotPoint": { "x": 32, "y": 32 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
-			"Decoration/rock": {
-				"x": 465,
-				"y": 29,
-				"w": 16,
-				"h": 6,
-				"rotated": false,
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceW": 16,
-				"sourceH": 6,
-				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 8, "y": 3 },
-				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
-			},
-			"Decoration/tiled_bg": {
-				"x": 133,
-				"y": 37,
-				"w": 64,
-				"h": 64,
-				"rotated": false,
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceW": 64,
-				"sourceH": 64,
-				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 32, "y": 32 },
-				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
-			},
 			"Enemy/Bat/Go/1": {
-				"x": 490,
-				"y": 32,
+				"x": 317,
+				"y": 207,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -191,8 +191,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Bat/Go/2": {
-				"x": 490,
-				"y": 50,
+				"x": 338,
+				"y": 117,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -205,8 +205,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Bat/Sleep-Hit/Hit": {
-				"x": 194,
-				"y": 187,
+				"x": 336,
+				"y": 135,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -219,8 +219,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Bat/Sleep-Hit/Sleep": {
-				"x": 213,
-				"y": 169,
+				"x": 336,
+				"y": 153,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -233,8 +233,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/1": {
-				"x": 212,
-				"y": 187,
+				"x": 335,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -247,8 +247,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/2": {
-				"x": 231,
-				"y": 169,
+				"x": 335,
+				"y": 189,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -261,8 +261,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/3": {
-				"x": 230,
-				"y": 187,
+				"x": 335,
+				"y": 207,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -275,8 +275,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/4": {
-				"x": 212,
-				"y": 187,
+				"x": 335,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -289,8 +289,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/5": {
-				"x": 349,
-				"y": 177,
+				"x": 317,
+				"y": 225,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -303,8 +303,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Go/6": {
-				"x": 426,
-				"y": 55,
+				"x": 335,
+				"y": 225,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -317,8 +317,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/PatrolGuy/Hit/1": {
-				"x": 444,
-				"y": 55,
+				"x": 360,
+				"y": 29,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -331,8 +331,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/GO/1": {
-				"x": 462,
-				"y": 55,
+				"x": 378,
+				"y": 29,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -345,8 +345,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/GO/2": {
-				"x": 420,
-				"y": 73,
+				"x": 354,
+				"y": 47,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -359,8 +359,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/GO/3": {
-				"x": 438,
-				"y": 73,
+				"x": 372,
+				"y": 47,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -373,8 +373,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/GO/4": {
-				"x": 456,
-				"y": 73,
+				"x": 396,
+				"y": 40,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -387,8 +387,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/GO/5": {
-				"x": 424,
-				"y": 91,
+				"x": 356,
+				"y": 117,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -401,8 +401,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Enemy/Slime/Hit/1": {
-				"x": 442,
-				"y": 91,
+				"x": 354,
+				"y": 135,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -415,8 +415,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/1": {
-				"x": 90,
-				"y": 205,
+				"x": 344,
+				"y": 93,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -429,8 +429,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/2": {
-				"x": 100,
-				"y": 205,
+				"x": 417,
+				"y": 106,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -443,8 +443,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/3": {
-				"x": 110,
-				"y": 205,
+				"x": 417,
+				"y": 116,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -457,8 +457,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/4": {
-				"x": 120,
-				"y": 205,
+				"x": 417,
+				"y": 126,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -471,8 +471,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/5": {
-				"x": 130,
-				"y": 205,
+				"x": 392,
+				"y": 126,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -485,8 +485,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/6": {
-				"x": 140,
-				"y": 205,
+				"x": 407,
+				"y": 241,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -499,8 +499,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/7": {
-				"x": 150,
-				"y": 205,
+				"x": 417,
+				"y": 241,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -513,8 +513,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Shine/8": {
-				"x": 160,
-				"y": 205,
+				"x": 308,
+				"y": 243,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -527,8 +527,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Spin/1": {
-				"x": 90,
-				"y": 205,
+				"x": 344,
+				"y": 93,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -541,8 +541,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Spin/2": {
-				"x": 170,
-				"y": 205,
+				"x": 318,
+				"y": 243,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -555,8 +555,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Spin/3": {
-				"x": 180,
-				"y": 205,
+				"x": 328,
+				"y": 243,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -569,8 +569,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Coin/Spin/4": {
-				"x": 190,
-				"y": 205,
+				"x": 338,
+				"y": 243,
 				"w": 8,
 				"h": 8,
 				"rotated": false,
@@ -583,92 +583,92 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/1": {
-				"x": 496,
-				"y": 85,
-				"w": 10,
-				"h": 9,
+				"x": 253,
+				"y": 28,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/2": {
-				"x": 496,
-				"y": 96,
-				"w": 10,
-				"h": 9,
+				"x": 348,
+				"y": 243,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/3": {
-				"x": 65,
-				"y": 169,
-				"w": 10,
-				"h": 9,
+				"x": 358,
+				"y": 243,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/4": {
-				"x": 279,
-				"y": 181,
-				"w": 10,
-				"h": 9,
+				"x": 368,
+				"y": 243,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/5": {
-				"x": 291,
-				"y": 181,
-				"w": 10,
-				"h": 9,
+				"x": 378,
+				"y": 243,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/Pick heart/6": {
-				"x": 303,
-				"y": 181,
-				"w": 10,
-				"h": 9,
+				"x": 388,
+				"y": 243,
+				"w": 8,
+				"h": 7,
 				"rotated": false,
 				"sourceX": 0,
 				"sourceY": 0,
-				"sourceW": 10,
-				"sourceH": 9,
+				"sourceW": 8,
+				"sourceH": 7,
 				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 5, "y": 4.5 },
+				"pivotPoint": { "x": 4, "y": 3.5 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/heart-grey": {
-				"x": 315,
-				"y": 181,
+				"x": 407,
+				"y": 208,
 				"w": 10,
 				"h": 9,
 				"rotated": false,
@@ -681,8 +681,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/heart-red": {
-				"x": 496,
-				"y": 85,
+				"x": 407,
+				"y": 219,
 				"w": 10,
 				"h": 9,
 				"rotated": false,
@@ -695,8 +695,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Items/Heart/heart_white": {
-				"x": 279,
-				"y": 181,
+				"x": 407,
+				"y": 230,
 				"w": 10,
 				"h": 9,
 				"rotated": false,
@@ -709,8 +709,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Menu/2": {
-				"x": 249,
-				"y": 169,
+				"x": 374,
+				"y": 96,
 				"w": 13,
 				"h": 15,
 				"rotated": false,
@@ -723,8 +723,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Menu/3": {
-				"x": 492,
-				"y": 68,
+				"x": 374,
+				"y": 113,
 				"w": 13,
 				"h": 15,
 				"rotated": false,
@@ -751,8 +751,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Menu/Play": {
-				"x": 360,
-				"y": 1,
+				"x": 265,
+				"y": 35,
 				"w": 77,
 				"h": 32,
 				"rotated": false,
@@ -807,8 +807,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Menu/Video": {
-				"x": 1,
-				"y": 181,
+				"x": 265,
+				"y": 69,
 				"w": 77,
 				"h": 32,
 				"rotated": false,
@@ -821,8 +821,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Menu/navigation-1": {
-				"x": 487,
-				"y": 163,
+				"x": 414,
+				"y": 40,
 				"w": 11,
 				"h": 15,
 				"rotated": false,
@@ -835,7 +835,7 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Black Bars": {
-				"x": 439,
+				"x": 360,
 				"y": 1,
 				"w": 45,
 				"h": 26,
@@ -849,8 +849,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/Weak blocks/2": {
-				"x": 45,
-				"y": 167,
+				"x": 407,
+				"y": 1,
 				"w": 18,
 				"h": 11,
 				"rotated": false,
@@ -863,8 +863,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/Weak blocks/3": {
-				"x": 377,
-				"y": 167,
+				"x": 407,
+				"y": 14,
 				"w": 18,
 				"h": 11,
 				"rotated": false,
@@ -877,8 +877,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/Weak blocks/weak1": {
-				"x": 486,
-				"y": 19,
+				"x": 407,
+				"y": 27,
 				"w": 18,
 				"h": 11,
 				"rotated": false,
@@ -891,8 +891,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/Weak blocks/weak_part": {
-				"x": 505,
-				"y": 7,
+				"x": 368,
+				"y": 93,
 				"w": 1,
 				"h": 1,
 				"rotated": false,
@@ -905,8 +905,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/block-1": {
-				"x": 460,
-				"y": 91,
+				"x": 354,
+				"y": 153,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -919,8 +919,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Blocks/block-2": {
-				"x": 411,
-				"y": 133,
+				"x": 353,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -933,8 +933,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Bomb/bomb-hit": {
-				"x": 17,
-				"y": 167,
+				"x": 349,
+				"y": 103,
 				"w": 12,
 				"h": 12,
 				"rotated": false,
@@ -947,8 +947,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Bomb/bomb": {
-				"x": 31,
-				"y": 167,
+				"x": 403,
+				"y": 122,
 				"w": 12,
 				"h": 12,
 				"rotated": false,
@@ -961,8 +961,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/BowObj/1": {
-				"x": 426,
-				"y": 50,
+				"x": 374,
+				"y": 130,
 				"w": 7,
 				"h": 3,
 				"rotated": false,
@@ -975,8 +975,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/BowObj/2": {
-				"x": 407,
-				"y": 68,
+				"x": 383,
+				"y": 130,
 				"w": 7,
 				"h": 3,
 				"rotated": false,
@@ -989,8 +989,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/BowObj/bowline": {
-				"x": 367,
-				"y": 177,
+				"x": 363,
+				"y": 103,
 				"w": 2,
 				"h": 1,
 				"rotated": false,
@@ -1003,8 +1003,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Box/box": {
-				"x": 489,
-				"y": 180,
+				"x": 414,
+				"y": 57,
 				"w": 11,
 				"h": 11,
 				"rotated": false,
@@ -1017,8 +1017,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Box/hit": {
-				"x": 416,
-				"y": 202,
+				"x": 374,
+				"y": 65,
 				"w": 15,
 				"h": 11,
 				"rotated": false,
@@ -1031,8 +1031,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Mushroom/1": {
-				"x": 367,
-				"y": 180,
+				"x": 257,
+				"y": 240,
 				"w": 15,
 				"h": 13,
 				"rotated": false,
@@ -1045,8 +1045,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Mushroom/2": {
-				"x": 384,
-				"y": 180,
+				"x": 274,
+				"y": 240,
 				"w": 15,
 				"h": 13,
 				"rotated": false,
@@ -1059,8 +1059,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Mushroom/3": {
-				"x": 416,
-				"y": 187,
+				"x": 291,
+				"y": 240,
 				"w": 15,
 				"h": 13,
 				"rotated": false,
@@ -1073,8 +1073,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Mushroom/4": {
-				"x": 367,
-				"y": 180,
+				"x": 257,
+				"y": 240,
 				"w": 15,
 				"h": 13,
 				"rotated": false,
@@ -1088,7 +1088,7 @@ module.exports = {
 			},
 			"Objects/Platforms/bridge": {
 				"x": 265,
-				"y": 167,
+				"y": 103,
 				"w": 82,
 				"h": 12,
 				"rotated": false,
@@ -1101,8 +1101,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Platforms/mov-platform1": {
-				"x": 349,
-				"y": 167,
+				"x": 14,
+				"y": 233,
 				"w": 26,
 				"h": 8,
 				"rotated": false,
@@ -1115,8 +1115,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Platforms/mov-platform2": {
-				"x": 439,
-				"y": 29,
+				"x": 293,
+				"y": 117,
 				"w": 24,
 				"h": 6,
 				"rotated": false,
@@ -1129,8 +1129,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Platforms/mov_string": {
-				"x": 505,
-				"y": 1,
+				"x": 368,
+				"y": 87,
 				"w": 1,
 				"h": 4,
 				"rotated": false,
@@ -1143,8 +1143,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Platforms/platform": {
-				"x": 407,
-				"y": 35,
+				"x": 265,
+				"y": 117,
 				"w": 26,
 				"h": 13,
 				"rotated": false,
@@ -1157,8 +1157,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Platforms/wheel": {
-				"x": 500,
-				"y": 163,
+				"x": 284,
+				"y": 232,
 				"w": 6,
 				"h": 6,
 				"rotated": false,
@@ -1186,7 +1186,7 @@ module.exports = {
 			},
 			"Objects/Pow/2": {
 				"x": 133,
-				"y": 103,
+				"y": 37,
 				"w": 64,
 				"h": 64,
 				"rotated": false,
@@ -1199,6 +1199,48 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Pow/3": {
+				"x": 133,
+				"y": 103,
+				"w": 64,
+				"h": 64,
+				"rotated": false,
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceW": 64,
+				"sourceH": 64,
+				"centerOffset": { "x": 0, "y": 0 },
+				"pivotPoint": { "x": 32, "y": 32 },
+				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
+			},
+			"Objects/Pow/4": {
+				"x": 67,
+				"y": 169,
+				"w": 64,
+				"h": 64,
+				"rotated": false,
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceW": 64,
+				"sourceH": 64,
+				"centerOffset": { "x": 0, "y": 0 },
+				"pivotPoint": { "x": 32, "y": 32 },
+				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
+			},
+			"Objects/Pow/5": {
+				"x": 133,
+				"y": 169,
+				"w": 64,
+				"h": 64,
+				"rotated": false,
+				"sourceX": 0,
+				"sourceY": 0,
+				"sourceW": 64,
+				"sourceH": 64,
+				"centerOffset": { "x": 0, "y": 0 },
+				"pivotPoint": { "x": 32, "y": 32 },
+				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
+			},
+			"Objects/Pow/6": {
 				"x": 199,
 				"y": 37,
 				"w": 64,
@@ -1212,7 +1254,7 @@ module.exports = {
 				"pivotPoint": { "x": 32, "y": 32 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
-			"Objects/Pow/4": {
+			"Objects/Pow/7": {
 				"x": 199,
 				"y": 103,
 				"w": 64,
@@ -1226,51 +1268,9 @@ module.exports = {
 				"pivotPoint": { "x": 32, "y": 32 },
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
-			"Objects/Pow/5": {
-				"x": 265,
-				"y": 35,
-				"w": 64,
-				"h": 64,
-				"rotated": false,
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceW": 64,
-				"sourceH": 64,
-				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 32, "y": 32 },
-				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
-			},
-			"Objects/Pow/6": {
-				"x": 265,
-				"y": 101,
-				"w": 64,
-				"h": 64,
-				"rotated": false,
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceW": 64,
-				"sourceH": 64,
-				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 32, "y": 32 },
-				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
-			},
-			"Objects/Pow/7": {
-				"x": 331,
-				"y": 35,
-				"w": 64,
-				"h": 64,
-				"rotated": false,
-				"sourceX": 0,
-				"sourceY": 0,
-				"sourceW": 64,
-				"sourceH": 64,
-				"centerOffset": { "x": 0, "y": 0 },
-				"pivotPoint": { "x": 32, "y": 32 },
-				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
-			},
 			"Objects/Pow/8": {
-				"x": 331,
-				"y": 101,
+				"x": 199,
+				"y": 169,
 				"w": 64,
 				"h": 64,
 				"rotated": false,
@@ -1283,8 +1283,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Treasure/treasure-hit": {
-				"x": 489,
-				"y": 193,
+				"x": 407,
+				"y": 182,
 				"w": 13,
 				"h": 11,
 				"rotated": false,
@@ -1297,8 +1297,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Treasure/treasure": {
-				"x": 264,
-				"y": 181,
+				"x": 407,
+				"y": 195,
 				"w": 13,
 				"h": 11,
 				"rotated": false,
@@ -1311,8 +1311,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/1": {
-				"x": 433,
-				"y": 181,
+				"x": 354,
+				"y": 87,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1325,8 +1325,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/2": {
-				"x": 433,
-				"y": 197,
+				"x": 389,
+				"y": 94,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1339,8 +1339,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/3": {
-				"x": 447,
-				"y": 181,
+				"x": 389,
+				"y": 110,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1353,8 +1353,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/4": {
-				"x": 447,
-				"y": 197,
+				"x": 403,
+				"y": 106,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1367,8 +1367,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/5": {
-				"x": 461,
-				"y": 181,
+				"x": 390,
+				"y": 136,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1381,8 +1381,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/6": {
-				"x": 461,
-				"y": 197,
+				"x": 390,
+				"y": 152,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1395,8 +1395,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/7": {
-				"x": 475,
-				"y": 181,
+				"x": 404,
+				"y": 136,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1409,8 +1409,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/8": {
-				"x": 475,
-				"y": 197,
+				"x": 404,
+				"y": 152,
 				"w": 12,
 				"h": 14,
 				"rotated": false,
@@ -1423,8 +1423,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/Splash1/9": {
-				"x": 1,
-				"y": 167,
+				"x": 407,
+				"y": 168,
 				"w": 14,
 				"h": 12,
 				"rotated": false,
@@ -1437,8 +1437,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/tiled_water": {
-				"x": 411,
-				"y": 151,
+				"x": 353,
+				"y": 189,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1451,8 +1451,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/water_bubble": {
-				"x": 371,
-				"y": 177,
+				"x": 393,
+				"y": 168,
 				"w": 1,
 				"h": 1,
 				"rotated": false,
@@ -1465,7 +1465,7 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/water_light": {
-				"x": 397,
+				"x": 344,
 				"y": 35,
 				"w": 8,
 				"h": 32,
@@ -1479,8 +1479,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/Water/watertop": {
-				"x": 253,
-				"y": 28,
+				"x": 354,
+				"y": 65,
 				"w": 18,
 				"h": 1,
 				"rotated": false,
@@ -1493,8 +1493,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/ice": {
-				"x": 425,
-				"y": 109,
+				"x": 353,
+				"y": 207,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1507,8 +1507,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/ladder": {
-				"x": 443,
-				"y": 109,
+				"x": 353,
+				"y": 225,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1521,8 +1521,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Objects/spikes": {
-				"x": 253,
-				"y": 31,
+				"x": 263,
+				"y": 28,
 				"w": 8,
 				"h": 4,
 				"rotated": false,
@@ -1535,8 +1535,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Blue-Red/Blue": {
-				"x": 397,
-				"y": 115,
+				"x": 284,
+				"y": 132,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1549,8 +1549,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Blue-Red/Red": {
-				"x": 397,
-				"y": 135,
+				"x": 284,
+				"y": 152,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1563,8 +1563,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Bow/1": {
-				"x": 461,
-				"y": 109,
+				"x": 372,
+				"y": 135,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1577,8 +1577,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Bow/2": {
-				"x": 429,
-				"y": 127,
+				"x": 372,
+				"y": 153,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1591,8 +1591,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Bow/3": {
-				"x": 429,
-				"y": 145,
+				"x": 371,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1605,8 +1605,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Bow/4": {
-				"x": 447,
-				"y": 127,
+				"x": 371,
+				"y": 189,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1619,8 +1619,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Bow/5": {
-				"x": 447,
-				"y": 145,
+				"x": 371,
+				"y": 207,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1633,8 +1633,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Climb/1": {
-				"x": 397,
-				"y": 155,
+				"x": 284,
+				"y": 172,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1647,8 +1647,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Climb/2": {
-				"x": 248,
-				"y": 195,
+				"x": 284,
+				"y": 192,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1661,8 +1661,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Fall-Jump-WallJ/Fall": {
-				"x": 486,
-				"y": 1,
+				"x": 265,
+				"y": 132,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1675,8 +1675,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Fall-Jump-WallJ/Jump": {
-				"x": 407,
-				"y": 50,
+				"x": 265,
+				"y": 150,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1689,8 +1689,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Fall-Jump-WallJ/WallJ": {
-				"x": 435,
-				"y": 37,
+				"x": 265,
+				"y": 168,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1703,8 +1703,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Hit/0": {
-				"x": 465,
-				"y": 127,
+				"x": 371,
+				"y": 225,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1717,8 +1717,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Hit/1": {
-				"x": 465,
-				"y": 145,
+				"x": 391,
+				"y": 58,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1731,8 +1731,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Hit/2": {
-				"x": 474,
-				"y": 73,
+				"x": 409,
+				"y": 70,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1745,8 +1745,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Hit/3": {
-				"x": 478,
-				"y": 91,
+				"x": 391,
+				"y": 76,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1759,8 +1759,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Hit/4": {
-				"x": 479,
-				"y": 109,
+				"x": 409,
+				"y": 88,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -1773,8 +1773,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Idle/1": {
-				"x": 80,
-				"y": 169,
+				"x": 265,
+				"y": 186,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1787,8 +1787,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Idle/2": {
-				"x": 80,
-				"y": 187,
+				"x": 265,
+				"y": 204,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1801,8 +1801,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Idle/3": {
-				"x": 99,
-				"y": 169,
+				"x": 265,
+				"y": 222,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1815,8 +1815,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Idle/4": {
-				"x": 99,
-				"y": 187,
+				"x": 298,
+				"y": 125,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1829,8 +1829,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Roll/1": {
-				"x": 262,
-				"y": 195,
+				"x": 284,
+				"y": 212,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1843,8 +1843,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Roll/2": {
-				"x": 276,
-				"y": 195,
+				"x": 61,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1857,8 +1857,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Roll/3": {
-				"x": 290,
-				"y": 195,
+				"x": 75,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1871,8 +1871,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Roll/4": {
-				"x": 304,
-				"y": 195,
+				"x": 89,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1885,8 +1885,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Roll/5": {
-				"x": 318,
-				"y": 195,
+				"x": 103,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -1899,8 +1899,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Run/1": {
-				"x": 118,
-				"y": 169,
+				"x": 298,
+				"y": 143,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1913,8 +1913,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/10": {
-				"x": 118,
-				"y": 187,
+				"x": 298,
+				"y": 161,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1927,8 +1927,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/2": {
-				"x": 137,
-				"y": 169,
+				"x": 298,
+				"y": 179,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1941,8 +1941,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/3": {
-				"x": 137,
-				"y": 187,
+				"x": 298,
+				"y": 197,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1955,8 +1955,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/4": {
-				"x": 156,
-				"y": 169,
+				"x": 298,
+				"y": 215,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1969,8 +1969,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/5": {
-				"x": 156,
-				"y": 187,
+				"x": 42,
+				"y": 233,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1983,8 +1983,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/6": {
-				"x": 118,
-				"y": 169,
+				"x": 298,
+				"y": 143,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -1997,8 +1997,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/7": {
-				"x": 175,
-				"y": 169,
+				"x": 319,
+				"y": 117,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -2011,8 +2011,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/8": {
-				"x": 175,
-				"y": 187,
+				"x": 317,
+				"y": 135,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -2025,8 +2025,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Run/9": {
-				"x": 194,
-				"y": 169,
+				"x": 317,
+				"y": 153,
 				"w": 17,
 				"h": 16,
 				"rotated": false,
@@ -2039,8 +2039,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.4375 }
 			},
 			"Player/Underwater/Idle/1": {
-				"x": 483,
-				"y": 127,
+				"x": 389,
+				"y": 171,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2053,8 +2053,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Idle/2": {
-				"x": 483,
-				"y": 145,
+				"x": 389,
+				"y": 189,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2067,8 +2067,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Idle/3": {
-				"x": 415,
-				"y": 169,
+				"x": 389,
+				"y": 207,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2081,8 +2081,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Idle/4": {
-				"x": 433,
-				"y": 163,
+				"x": 389,
+				"y": 225,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2095,8 +2095,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Jump-Fall/Fall": {
-				"x": 451,
-				"y": 163,
+				"x": 353,
+				"y": 69,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2109,8 +2109,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Jump-Fall/Jump": {
-				"x": 469,
-				"y": 163,
+				"x": 371,
+				"y": 78,
 				"w": 16,
 				"h": 16,
 				"rotated": false,
@@ -2123,8 +2123,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/1": {
-				"x": 332,
-				"y": 195,
+				"x": 117,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2137,8 +2137,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/10": {
-				"x": 346,
-				"y": 195,
+				"x": 131,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2151,8 +2151,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/2": {
-				"x": 360,
-				"y": 195,
+				"x": 145,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2165,8 +2165,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/3": {
-				"x": 374,
-				"y": 195,
+				"x": 159,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2179,8 +2179,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/4": {
-				"x": 388,
-				"y": 195,
+				"x": 173,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2193,8 +2193,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/5": {
-				"x": 401,
-				"y": 175,
+				"x": 187,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2207,8 +2207,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/6": {
-				"x": 402,
-				"y": 195,
+				"x": 201,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2221,8 +2221,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/7": {
-				"x": 406,
-				"y": 73,
+				"x": 215,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2235,8 +2235,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/8": {
-				"x": 410,
-				"y": 93,
+				"x": 229,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2249,8 +2249,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/Underwater/Run/9": {
-				"x": 411,
-				"y": 113,
+				"x": 243,
+				"y": 235,
 				"w": 12,
 				"h": 18,
 				"rotated": false,
@@ -2263,8 +2263,8 @@ module.exports = {
 				"pivotPointNorm": { "x": 0.5, "y": 0.5 }
 			},
 			"Player/player_dust": {
-				"x": 200,
-				"y": 205,
+				"x": 354,
+				"y": 35,
 				"w": 4,
 				"h": 4,
 				"rotated": false,

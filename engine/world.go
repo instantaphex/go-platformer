@@ -6,7 +6,7 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-const ENTITY_COUNT = 5
+const ENTITY_COUNT = 3
 
 type World struct {
 	mask [ENTITY_COUNT]uint64
@@ -17,6 +17,7 @@ type World struct {
 	focused [ENTITY_COUNT]Focused
 	state [ENTITY_COUNT]State
 	collider [ENTITY_COUNT]Collider
+	controller [ENTITY_COUNT]Controller
 	systems []System
 }
 
@@ -46,18 +47,81 @@ func (w *World) DestroyEntity(entity uint64) {
 	w.mask[entity] = COMPONENT_NONE
 }
 
+func (w *World) GetColliders() []int {
+	var list []int
+	for entity, signature := range w.mask {
+		if signatureMatches(signature, COMPONENT_COLLIDER) {
+			list = append(list, entity)
+		}
+	}
+	return list
+}
+
+func (w *World) Collides(a, b sdl.Rect) bool {
+	var left1, left2, right1, right2, top1, top2, bottom1, bottom2 int32
+
+	left1 = a.X
+	left2 = b.X
+
+	right1 = left1 + a.W - 1
+	right2 = b.X + b.W - 1
+
+	top1 = a.Y
+	top2 = b.Y
+
+	bottom1 = top1 + a.H - 1
+	bottom2 = top2 + b.H - 1
+
+	if bottom1 < top2 { return false }
+	if top1 > bottom2 { return false }
+	if right1 < left2 { return false }
+	if left1 > right2 { return false }
+
+	return true
+}
+
+func (w *World) CreateHeart(engine * Engine, x, y float32) int {
+	entity := w.CreateEntity()
+	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_COLLIDER|COMPONENT_ANIMATION|COMPONENT_STATE
+	w.position[entity].x = x
+	w.position[entity].y = y
+	w.collider[entity].w = 8
+	w.collider[entity].h = 7
+	w.state[entity].animationStates = make(map[AnimationStateKey]AnimationState)
+	w.state[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
+		asset: "Items/Heart/Pick heart",
+		flip:  sdl.FLIP_NONE,
+		frameRate: 200,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
+	return entity
+}
+
+func (w *World) CreateCoin(engine * Engine, x, y float32) int {
+	entity := w.CreateEntity()
+	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_COLLIDER|COMPONENT_ANIMATION|COMPONENT_STATE
+	w.position[entity].x = x
+	w.position[entity].y = y
+	w.collider[entity].w = 8
+	w.collider[entity].h = 8
+	w.state[entity].animationStates = make(map[AnimationStateKey]AnimationState)
+	w.state[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
+		asset: "Items/Coin/Shine",
+		flip:  sdl.FLIP_NONE,
+		frameRate: 200,
+		infinite: true,
+		orientation: ORIENTATION_RIGHT,
+	}
+	return entity
+}
+
 func (w *World) CreatePlayer(engine *Engine, x, y float32) int {
 	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_COLLIDER
+	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_COLLIDER|COMPONENT_CONTROLLER
 
 	w.position[entity].x = x
 	w.position[entity].y = y
-
-	w.appearance[entity].name = "Player/Idle"
-
-	w.animation[entity].maxFrames = len(engine.Assets.Get("Player/Idle"))
-	w.animation[entity].frameRate = 200
-	w.animation[entity].frameInc = 1
 
 	w.velocity[entity].maxSpeedY = 5
 	w.velocity[entity].maxSpeedX = 2.2
