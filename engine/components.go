@@ -21,7 +21,7 @@ const (
 
 type Orientation int
 
-type AnimationStateKey int
+type StateKey int
 
 type AnimationState struct {
 	asset string
@@ -66,48 +66,34 @@ type Appearance struct {
 	flip sdl.RendererFlip
 	name string
 	frame AnimationFrame
-	xOffset int32
-	yOffset int32
-	w int32
-	h int32
 }
 
 type State struct {
-	animationStates map[AnimationStateKey]AnimationState
-	currentAnimKey AnimationStateKey
-	desiredAnimKey AnimationStateKey
-	animationState AnimationState
-	jumping bool
-	canJump bool
-	grounded bool
-	newState bool
-	moveRight bool
-	moveLeft bool
-	rolling bool
-	shooting bool
-	orientation Orientation
+	jumping         bool
+	canJump         bool
+	grounded        bool
+	moveRight       bool
+	moveLeft        bool
+	rolling         bool
+	shooting        bool
+	orientation     Orientation
+	flip sdl.RendererFlip
+	state StateKey
 }
 
-type Controller struct {
-	jumping bool
-	canJump bool
-	grounded bool
-	newState bool
-	moveRight bool
-	moveLeft bool
-	rolling bool
-	shooting bool
-	orientation Orientation
-}
 
 type Animation struct {
-	currentFrame int
-	frameInc int
-	frameRate int
-	oldTime uint32
-	maxFrames int
-	complete bool
+	animationStates map[StateKey]AnimationState
+	animState StateKey
+	currentFrame    int
+	frameInc        int
+	frameRate       int
+	oldTime         uint32
+	maxFrames       int
+	complete        bool
 }
 
+// empty components for tagging
+type Controller struct {}
 type Focused struct {}
 

@@ -86,7 +86,6 @@ func (g *Engine) Init() error {
 	g.World.RegisterSystem(&CameraSystem{})
 	g.World.RegisterSystem(&InputSystem{})
 	g.World.RegisterSystem(&AnimationSystem{})
-	g.World.RegisterSystem(&StateSystem{})
 	g.World.RegisterSystem(&VelocitySystem{})
 	g.World.RegisterSystem(&MovementSystem{})
 
