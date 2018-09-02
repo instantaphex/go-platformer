@@ -93,7 +93,7 @@ func (g *Engine) Init() error {
 	g.World.RegisterSystem(&MapRenderSystem{})
 	g.World.RegisterSystem(&RenderSystem{})
 
-	g.World.CreatePlayer(g, 100, 0)
+	// g.World.CreatePlayer(g, 100, 0)
 	g.Map.Load("level1", g.World)
 	/* DUMPING GROUND */
 

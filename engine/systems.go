@@ -13,19 +13,19 @@ func signatureMatches(mask, signature uint64) bool {
 }
 
 type RenderSystem struct {
-	signature int64
 }
 func (rs *RenderSystem) Update (engine *Engine, world *World) {
 	for entity, mask := range world.mask {
-		if signatureMatches(mask, COMPONENT_POSITION|COMPONENT_ANIMATION|COMPONENT_STATE) {
-			pos := world.GetPos(entity)
+		if signatureMatches(mask, COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_STATE) {
+			transformCmp := world.GetTransform(entity)
 			animationCmp := world.GetAnimation(entity)
 			stateCmp := world.GetState(entity)
 
 			// grab animation metadata
-			animState := animationCmp.animationStates[stateCmp.state]
+			animState := animationCmp.animationStates[animationCmp.animState]
 			// grab frames
-			frame := engine.Assets.Get(animState.asset)[animationCmp.currentFrame]
+			frames := engine.Assets.Get(animState.asset)
+			frame := frames[animationCmp.currentFrame]
 
 			// perform sprite flip if needed
 			var flip sdl.RendererFlip
@@ -36,20 +36,17 @@ func (rs *RenderSystem) Update (engine *Engine, world *World) {
 			}
 
 			// determine x and y
-			x := int32(pos.x - engine.Camera.X())
-			y := int32(pos.y - engine.Camera.Y())
+			x := int32(transformCmp.x - engine.Camera.X())
+			y := int32(transformCmp.y - engine.Camera.Y())
 
 			// line up bounding box center with actual sprite center
-			// TODO: Incorporate collision box into appearance component, this won't work for
-			col := &(world.collider[entity])
-			offsetW := (frame.W / 2) - (col.w / 2)
-			offsetH := (frame.H / 2) - (col.h / 2)
+			offsetW := (frame.W / 2) - (transformCmp.w / 2)
+			offsetH := (frame.H / 2) - (transformCmp.h / 2)
 			offsetX := x - offsetW
 			offsetY := y - offsetH
 
-			if signatureMatches(mask, COMPONENT_COLLIDER) && engine.Config.DrawDebug {
-				col := &(world.collider[entity])
-				engine.Graphics.DrawRectOutline(x, y, col.w, col.h)
+			if engine.Config.DrawDebug {
+				engine.Graphics.DrawRectOutline(x, y, transformCmp.w, transformCmp.h)
 			}
 			engine.Graphics.DrawPart(engine.Assets.Texture, offsetX, offsetY, frame.X, frame.Y, frame.W, frame.H, flip)
 		}
@@ -62,7 +59,6 @@ func (mrs *MapRenderSystem) Update (engine *Engine, world *World) {
 }
 
 type AnimationSystem struct {}
-
 func (as *AnimationSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, COMPONENT_ANIMATION|COMPONENT_STATE) {
@@ -71,23 +67,24 @@ func (as *AnimationSystem) Update(engine *Engine, world *World) {
 
 			// determine if we are transitioning to a new state
 			// or keeping the current state.  Transitioning to
-			// a new state should reset the frame counter to 0
+			// a new state should reset the current frame to 0
 			if stateCmp.state != animationCmp.animState {
 				animationCmp.currentFrame = 0
 				animationCmp.animState = stateCmp.state
 			}
 
-			frames := engine.Assets.Get(animationCmp.animationStates[animationCmp.animState].asset)
-			animationCmp.maxFrames = len(frames) - 1
-			animationCmp.frameRate = animationCmp.animationStates[animationCmp.animState].frameRate
+			animState := animationCmp.animationStates[animationCmp.animState]
+			frames := engine.Assets.Get(animState.asset)
+			animationCmp.maxFrames = len(frames)
 			animationCmp.frameInc = 1
-			if len(frames) == 0 { return }
 
 			// advance frames
-			if animationCmp.oldTime + uint32(animationCmp.frameRate) > sdl.GetTicks() {
-				return
+			currentTime := sdl.GetTicks()
+			threshold := animationCmp.oldTime + uint32(animState.frameRate)
+			if threshold > currentTime {
+				continue
 			}
-			animationCmp.oldTime = sdl.GetTicks()
+			animationCmp.oldTime = currentTime
 			animationCmp.currentFrame += animationCmp.frameInc
 			if animationCmp.currentFrame >= animationCmp.maxFrames {
 				animationCmp.currentFrame = 0
@@ -168,10 +165,8 @@ func (ms *VelocitySystem) Update(engine *Engine, world *World) {
 				}
 			}
 
+			// apply gravity
 			ms.v.accelY = .25
-			/*if e.Flags & ENTITY_FLAG_GRAVITY != 0 {
-				e.AccelY = .55
-			}*/
 
 			ms.v.speedX += ms.v.accelX * engine.FPS.GetSpeedFactor()
 			ms.v.speedY += ms.v.accelY * engine.FPS.GetSpeedFactor()
@@ -208,8 +203,7 @@ func (vs *VelocitySystem) StopMove() {
 }
 
 type MovementSystem struct {
-	col *Collider
-	pos *Position
+	transform *Transform
 	v *Velocity
 	stateCmp *State
 	engine *Engine
@@ -220,9 +214,8 @@ type MovementSystem struct {
 func (ms *MovementSystem) Update(engine *Engine, world *World) {
 	ms.engine = engine
 	for entity, mask := range world.mask {
-		if signatureMatches(mask, COMPONENT_COLLIDER|COMPONENT_POSITION|COMPONENT_VELOCITY|COMPONENT_STATE) {
-			ms.col = world.GetCollider(entity)
-			ms.pos = world.GetPos(entity)
+		if signatureMatches(mask, COMPONENT_TRANSFORM|COMPONENT_VELOCITY|COMPONENT_STATE) {
+			ms.transform = world.GetTransform(entity)
 			ms.v = world.GetVelocity(entity)
 			ms.stateCmp = world.GetState(entity)
 			ms.world = world
@@ -265,18 +258,18 @@ func (ms *MovementSystem) Move(moveX, moveY float32) {
 	// move, checking for collisions allong the way
 	for {
 		// check for collision at desired x position
-		if ms.PosValid(int32(ms.pos.x + newX), int32(ms.pos.y)) {
+		if ms.PosValid(int32(ms.transform.x + newX), int32(ms.transform.y)) {
 			// no collision, update position
-			ms.pos.x += newX
+			ms.transform.x += newX
 		} else {
 			// collision detected, set speed to zero so we don't allow the movement
 			ms.v.speedX = 0
 		}
 
 		// check for collision at desired y
-		if ms.PosValid(int32(ms.pos.x), int32(ms.pos.y + newY)) {
+		if ms.PosValid(int32(ms.transform.x), int32(ms.transform.y + newY)) {
 			// no collision, update position
-			ms.pos.y += newY
+			ms.transform.y += newY
 		} else {
 			// collision detected, set speed to zero so we don't allow the movement
 			ms.v.speedY = 0
@@ -316,8 +309,8 @@ func (ms *MovementSystem) PosValid(newX int32, newY int32) bool {
 	startX := (newX) / TILE_SIZE
 	startY := (newY) / TILE_SIZE
 
-	endX := ((newX) + ms.col.w - 1) / TILE_SIZE
-	endY := ((newY) + ms.col.h - 1) / TILE_SIZE
+	endX := ((newX) + ms.transform.w - 1) / TILE_SIZE
+	endY := ((newY) + ms.transform.h - 1) / TILE_SIZE
 
 	for iY := startY; iY <= endY; iY++ {
 		for iX := startX; iX <= endX; iX++ {
@@ -334,22 +327,21 @@ func (ms *MovementSystem) PosValid(newX int32, newY int32) bool {
 	// TODO: Make event system for entity collisions
 	collidableEntities := ms.world.GetColliders()
 	for _, id := range collidableEntities {
-		colliderA := ms.world.collider[ms.currentEntity]
-		colliderB := ms.world.collider[id]
-		posB := ms.world.position[id]
+		transformA := ms.world.transform[ms.currentEntity]
+		transformB := ms.world.transform[id]
 		a := sdl.Rect {
 			// check for desired x and y, not current
 			X: int32(newX),
 			Y: int32(newY),
-			W: int32(colliderA.w),
-			H: int32(colliderA.h),
+			W: int32(transformA.w),
+			H: int32(transformA.h),
 		}
 		b := sdl.Rect {
 			// check for world coordinates, not camera coordinates
-			X: int32(posB.x - 1),
-			Y: int32(posB.y - 1),
-			W: int32(colliderB.w),
-			H: int32(colliderB.h),
+			X: int32(transformB.x - 1),
+			Y: int32(transformB.y - 1),
+			W: int32(transformB.w),
+			H: int32(transformB.h),
 		}
 		if ms.world.Collides(a, b) && ms.currentEntity != id {
 			retVal = false
@@ -376,7 +368,7 @@ type CameraSystem struct {
 func (cs *CameraSystem) Update(engine *Engine, world *World) {
 	for entity, mask := range world.mask {
 		if signatureMatches(mask, COMPONENT_FOCUSED) && !cs.targeted {
-			pos := world.GetPos(entity)
+			pos := world.GetTransform(entity)
 			engine.Camera.SetTarget(&pos.x, &pos.y)
 			cs.targeted = true
 		}

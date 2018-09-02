@@ -57,6 +57,9 @@ func (m *Map) Load(mapName string, world *World) error {
 		fmt.Println(group)
 	}
 	for _, obj := range group.Objects {
+		if obj.Type == "player" {
+			world.CreatePlayer(m.engine, float32(obj.X), float32(obj.Y))
+		}
 		if obj.Type == "coin" {
 			world.CreateCoin(m.engine, float32(obj.X), float32(obj.Y))
 		}
@@ -111,7 +114,7 @@ func (m *Map) Render(mapX int32, mapY int32) {
 			tilesetX := (m.tileList[id].TileID % tilesetWidth) * m.TileSize
 			tilesetY := (m.tileList[id].TileID / tilesetHeight) * m.TileSize
 
-			m.engine.Graphics.DrawPart(m.Texture, tX, tY, tilesetX, tilesetY, m.TileSize, m.TileSize)
+			m.engine.Graphics.DrawPart(m.Texture, tX, tY, tilesetX, tilesetY, m.TileSize, m.TileSize, sdl.FLIP_NONE)
 
 			id++
 		}

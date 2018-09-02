@@ -10,8 +10,9 @@ const (
 	COMPONENT_ANIMATION = 1 << 3
 	COMPONENT_FOCUSED = 1 << 4
 	COMPONENT_STATE = 1 << 5
-	COMPONENT_COLLIDER = 1 << 6
-	COMPONENT_CONTROLLER = 1 << 7
+	COMPONENT_CONTROLLER = 1 << 6
+	COMPONENT_TRANSFORM = 1 << 7
+	COMPONENT_COLLIDABLE = 1 << 8
 )
 
 const (
@@ -41,12 +42,7 @@ const (
 	ENTITY_STATE_ROLL
 )
 
-type Position struct {
-	x float32
-	y float32
-}
-
-type Collider struct {
+type Transform struct {
 	x float32
 	y float32
 	w int32
@@ -60,12 +56,6 @@ type Velocity struct {
 	accelY float32
 	maxSpeedX float32
 	maxSpeedY float32
-}
-
-type Appearance struct {
-	flip sdl.RendererFlip
-	name string
-	frame AnimationFrame
 }
 
 type State struct {
@@ -96,4 +86,5 @@ type Animation struct {
 // empty components for tagging
 type Controller struct {}
 type Focused struct {}
+type Collidable struct {}
 

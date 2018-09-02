@@ -20,25 +20,19 @@ func (g *Graphics) Load(file string) (*sdl.Texture, error) {
 	return i, err
 }
 
-func (g *Graphics) Draw(texture *sdl.Texture, x int32, y int32) {
+func (g *Graphics) DrawFull(texture *sdl.Texture, x int32, y int32) {
 	_, _, w, h, err := texture.Query()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to draw texture: %s\n", err)
 		panic(err)
 	}
-	g.DrawPart(texture, x, y, 0, 0, w, h)
+	g.DrawPart(texture, x, y, 0, 0, w, h, sdl.FLIP_NONE)
 }
 
-func (g *Graphics) DrawPart(texture *sdl.Texture, x int32, y int32, clipX int32, clipY int32, w int32, h int32, flip ...sdl.RendererFlip) {
-	/*x = x + w / 2
-	y = y + h / 2*/
+func (g *Graphics) DrawPart(texture *sdl.Texture, x int32, y int32, clipX int32, clipY int32, w int32, h int32, flip sdl.RendererFlip) {
 	src := sdl.Rect{clipX, clipY, w, h}
 	dst := sdl.Rect{x, y, w, h}
-	renderFlip := sdl.FLIP_NONE
-	if (len(flip) > 0) {
-		renderFlip = flip[0]
-	}
-	g.engine.renderer.CopyEx(texture, &src, &dst, 0.0, nil, renderFlip)
+	g.engine.renderer.CopyEx(texture, &src, &dst, 0.0, nil, flip)
 }
 
 func (g *Graphics) DrawRectOutline(x, y, w, h int32) {

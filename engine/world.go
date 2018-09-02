@@ -9,19 +9,25 @@ import (
 const ENTITY_COUNT = 3
 
 type World struct {
+	// data components
 	mask [ENTITY_COUNT]uint64
-	position [ENTITY_COUNT]Position
+	transform [ENTITY_COUNT]Transform
 	velocity [ENTITY_COUNT]Velocity
-	appearance [ENTITY_COUNT]Appearance
 	animation [ENTITY_COUNT]Animation
-	focused [ENTITY_COUNT]Focused
 	state [ENTITY_COUNT]State
-	collider [ENTITY_COUNT]Collider
+
+	// no data components
+	focused [ENTITY_COUNT]Focused
 	controller [ENTITY_COUNT]Controller
+	collidable [ENTITY_COUNT]Collidable
+
 	systems []System
 }
 
 func (w *World) RegisterSystem(system System) {
+	if w.systems == nil {
+		w.systems = make([]System, 0)
+	}
 	w.systems = append(w.systems, system)
 }
 
@@ -35,8 +41,8 @@ func (w *World) GetMask(entity int) *uint64 {
 	return &w.mask[entity]
 }
 
-func (w *World) GetPos(entity int) *Position {
-	return &w.position[entity]
+func (w *World) GetTransform(entity int) *Transform {
+	return &w.transform[entity]
 }
 
 func (w *World) GetVelocity(entity int) *Velocity {
@@ -49,10 +55,6 @@ func (w *World) GetAnimation(entity int) *Animation {
 
 func (w *World) GetState(entity int) *State {
 	return &w.state[entity]
-}
-
-func (w *World) GetCollider(entity int) *Collider {
-	return &w.collider[entity]
 }
 
 func (w *World) CreateEntity() int {
@@ -74,7 +76,7 @@ func (w *World) DestroyEntity(entity uint64) {
 func (w *World) GetColliders() []int {
 	var list []int
 	for entity, signature := range w.mask {
-		if signatureMatches(signature, COMPONENT_COLLIDER) {
+		if signatureMatches(signature, COMPONENT_TRANSFORM) {
 			list = append(list, entity)
 		}
 	}
@@ -106,16 +108,16 @@ func (w *World) Collides(a, b sdl.Rect) bool {
 
 func (w *World) CreateHeart(engine * Engine, x, y float32) int {
 	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_COLLIDER|COMPONENT_ANIMATION|COMPONENT_STATE
-	w.position[entity].x = x
-	w.position[entity].y = y
-	w.collider[entity].w = 8
-	w.collider[entity].h = 7
+	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_STATE
+	w.transform[entity].x = x
+	w.transform[entity].y = y
+	w.transform[entity].w = 8
+	w.transform[entity].h = 7
 	w.animation[entity].animationStates = make(map[StateKey]AnimationState)
 	w.animation[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
 		asset: "Items/Heart/Pick heart",
 		flip:  sdl.FLIP_NONE,
-		frameRate: 200,
+		frameRate: 100,
 		infinite: true,
 		orientation: ORIENTATION_RIGHT,
 	}
@@ -124,11 +126,11 @@ func (w *World) CreateHeart(engine * Engine, x, y float32) int {
 
 func (w *World) CreateCoin(engine * Engine, x, y float32) int {
 	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_COLLIDER|COMPONENT_ANIMATION|COMPONENT_STATE
-	w.position[entity].x = x
-	w.position[entity].y = y
-	w.collider[entity].w = 8
-	w.collider[entity].h = 8
+	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_STATE
+	w.transform[entity].x = x
+	w.transform[entity].y = y
+	w.transform[entity].w = 8
+	w.transform[entity].h = 8
 	w.animation[entity].animationStates = make(map[StateKey]AnimationState)
 	w.animation[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
 		asset: "Items/Coin/Shine",
@@ -142,16 +144,15 @@ func (w *World) CreateCoin(engine * Engine, x, y float32) int {
 
 func (w *World) CreatePlayer(engine *Engine, x, y float32) int {
 	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_POSITION|COMPONENT_APPEARANCE|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_COLLIDER|COMPONENT_CONTROLLER
+	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_CONTROLLER
 
-	w.position[entity].x = x
-	w.position[entity].y = y
+	w.transform[entity].x = x
+	w.transform[entity].y = y
+	w.transform[entity].w = 9
+	w.transform[entity].h = 14
 
 	w.velocity[entity].maxSpeedY = 5
 	w.velocity[entity].maxSpeedX = 2.2
-
-	w.collider[entity].w = 9
-	w.collider[entity].h = 14
 
 	w.state[entity].canJump = true
 
