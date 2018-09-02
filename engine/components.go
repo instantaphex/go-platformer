@@ -25,11 +25,11 @@ type Orientation int
 type StateKey int
 
 type AnimationState struct {
-	asset string
-	frameRate int
-	flip sdl.RendererFlip
-	infinite bool
-	orientation Orientation
+	Asset       string
+	FrameRate   int
+	Flip        sdl.RendererFlip
+	Infinite    bool
+	Orientation Orientation
 }
 
 const (
@@ -43,44 +43,66 @@ const (
 )
 
 type Transform struct {
-	x float32
-	y float32
-	w int32
-	h int32
+	X float32
+	Y float32
+	W int32
+	H int32
+}
+
+func (t *Transform) GetBB() sdl.Rect {
+	return sdl.Rect {
+		X: int32(t.X - 1),
+		Y: int32(t.Y - 1),
+		W: int32(t.W),
+		H: int32(t.H),
+	}
+}
+
+func (t *Transform) GetPotentialBB(x, y int32) sdl.Rect {
+	return sdl.Rect {
+		X: x,
+		Y: y,
+		W: int32(t.W),
+		H: int32(t.H),
+	}
 }
 
 type Velocity struct {
-	speedX float32
-	speedY float32
-	accelX float32
-	accelY float32
-	maxSpeedX float32
-	maxSpeedY float32
+	SpeedX    float32
+	SpeedY    float32
+	AccelX    float32
+	AccelY    float32
+	MaxSpeedX float32
+	MaxSpeedY float32
 }
 
 type State struct {
-	jumping         bool
-	canJump         bool
-	grounded        bool
-	moveRight       bool
-	moveLeft        bool
-	rolling         bool
-	shooting        bool
-	orientation     Orientation
-	flip sdl.RendererFlip
-	state StateKey
+	Jumping     bool
+	CanJump     bool
+	Grounded    bool
+	MoveRight   bool
+	MoveLeft    bool
+	Rolling     bool
+	Shooting    bool
+	Orientation Orientation
+	Flip        sdl.RendererFlip
+	State       StateKey
 }
 
 
 type Animation struct {
-	animationStates map[StateKey]AnimationState
-	animState StateKey
-	currentFrame    int
-	frameInc        int
-	frameRate       int
-	oldTime         uint32
-	maxFrames       int
-	complete        bool
+	AnimationStates map[StateKey]AnimationState
+	AnimState       StateKey
+	CurrentFrame    int
+	FrameInc        int
+	FrameRate       int
+	OldTime         uint32
+	MaxFrames       int
+	Complete        bool
+}
+
+func (a *Animation) CurrentState() AnimationState {
+	return a.AnimationStates[a.AnimState]
 }
 
 // empty components for tagging

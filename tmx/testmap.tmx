@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextobjectid="9">
+<map version="1.0" tiledversion="1.1.5" Orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" Infinite="0" nextobjectid="9">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="64" columns="16">
   <image source="../tilesets/tilemap.png" width="256" height="64"/>
  </tileset>
  <tileset firstgid="65" name="tiles" tilewidth="16" tileheight="16" tilecount="42" columns="0">
-  <grid orientation="orthogonal" width="1" height="1"/>
+  <grid Orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
    <image width="16" height="16" source="../../../../../../Desktop/Super-Pixel-Platformer-Assets/tile-map/0.png"/>
   </tile>

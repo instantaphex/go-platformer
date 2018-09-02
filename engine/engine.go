@@ -49,19 +49,19 @@ func New(cfg EngineConfig) *Engine {
 	return eng
 }
 
-func (g *Engine) Init() error {
+func (e *Engine) Init() error {
 	var err error
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
 		panic(err)
 		return err
 	}
 
-	g.window, err = sdl.CreateWindow(
-		g.Config.WindowTitle,
+	e.window, err = sdl.CreateWindow(
+		e.Config.WindowTitle,
 		sdl.WINDOWPOS_UNDEFINED,
 		sdl.WINDOWPOS_UNDEFINED,
-		g.Config.WindowWidth,
-		g.Config.WindowHeight,
+		e.Config.WindowWidth,
+		e.Config.WindowHeight,
 		sdl.WINDOW_SHOWN,
 	)
 
@@ -70,32 +70,16 @@ func (g *Engine) Init() error {
 		return err
 	}
 
-	g.renderer, err = sdl.CreateRenderer(g.window, -1, sdl.RENDERER_ACCELERATED|sdl.RENDERER_PRESENTVSYNC)
+	e.renderer, err = sdl.CreateRenderer(e.window, -1, sdl.RENDERER_ACCELERATED|sdl.RENDERER_PRESENTVSYNC)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create rederer: %s\n", err)
 		return err
 	}
 
-	g.renderer.SetScale(g.Config.Scale, g.Config.Scale)
+	e.renderer.SetScale(e.Config.Scale, e.Config.Scale)
 
-	g.Assets.Init()
-	g.Audio.Init()
-
-	/* DUMPING GROUND */
-	g.World = &World{}
-	g.World.RegisterSystem(&CameraSystem{})
-	g.World.RegisterSystem(&InputSystem{})
-	g.World.RegisterSystem(&AnimationSystem{})
-	g.World.RegisterSystem(&VelocitySystem{})
-	g.World.RegisterSystem(&MovementSystem{})
-
-	// order matters here
-	g.World.RegisterSystem(&MapRenderSystem{})
-	g.World.RegisterSystem(&RenderSystem{})
-
-	// g.World.CreatePlayer(g, 100, 0)
-	g.Map.Load("level1", g.World)
-	/* DUMPING GROUND */
+	e.Assets.Init()
+	e.Audio.Init()
 
 	return nil
 }

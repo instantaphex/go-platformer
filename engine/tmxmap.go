@@ -12,7 +12,7 @@ import (
 
 type TmxMap struct {
 	Version      string           `xml:"version,attr"`
-	Orientation  string           `xml:"orientation,attr"`
+	Orientation  string           `xml:"Orientation,attr"`
 	Width        int              `xml:"width,attr"`
 	Height       int              `xml:"height,attr"`
 	TileWidth    int              `xml:"tilewidth,attr"`
@@ -68,8 +68,8 @@ type TmxObjectGroup struct {
 
 type TmxObject struct {
 	Type   string `xml:"type,attr"`
-	X      int    `xml:"x,attr"`
-	Y      int    `xml:"y,attr"`
+	X      int    `xml:"X,attr"`
+	Y      int    `xml:"Y,attr"`
 	Width  int    `xml:"width,attr"`
 	Height int    `xml:"height,attr"`
 }

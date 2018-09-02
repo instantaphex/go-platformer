@@ -8,20 +8,23 @@ import (
 
 const ENTITY_COUNT = 3
 
+type EntityBuilder func(world *World, x, y float32) int
+
 type World struct {
 	// data components
-	mask [ENTITY_COUNT]uint64
-	transform [ENTITY_COUNT]Transform
-	velocity [ENTITY_COUNT]Velocity
-	animation [ENTITY_COUNT]Animation
-	state [ENTITY_COUNT]State
+	Mask      [ENTITY_COUNT]uint64
+	Transform [ENTITY_COUNT]Transform
+	Velocity  [ENTITY_COUNT]Velocity
+	Animation [ENTITY_COUNT]Animation
+	State     [ENTITY_COUNT]State
 
 	// no data components
-	focused [ENTITY_COUNT]Focused
-	controller [ENTITY_COUNT]Controller
-	collidable [ENTITY_COUNT]Collidable
+	Focused    [ENTITY_COUNT]Focused
+	Controller [ENTITY_COUNT]Controller
+	Collidable [ENTITY_COUNT]Collidable
 
 	systems []System
+	entityBuilders map[string]EntityBuilder
 }
 
 func (w *World) RegisterSystem(system System) {
@@ -31,6 +34,13 @@ func (w *World) RegisterSystem(system System) {
 	w.systems = append(w.systems, system)
 }
 
+func (w *World) RegisterEntityBuilder(name string, builder EntityBuilder) {
+	if w.entityBuilders == nil {
+		w.entityBuilders = make(map[string]EntityBuilder)
+	}
+	w.entityBuilders[name] = builder
+}
+
 func (w *World) Update(engine *Engine) {
 	for _, system := range w.systems {
 		system.Update(engine, w)
@@ -38,28 +48,28 @@ func (w *World) Update(engine *Engine) {
 }
 
 func (w *World) GetMask(entity int) *uint64 {
-	return &w.mask[entity]
+	return &w.Mask[entity]
 }
 
 func (w *World) GetTransform(entity int) *Transform {
-	return &w.transform[entity]
+	return &w.Transform[entity]
 }
 
 func (w *World) GetVelocity(entity int) *Velocity {
-	return &w.velocity[entity]
+	return &w.Velocity[entity]
 }
 
 func (w *World) GetAnimation(entity int) *Animation {
-	return &w.animation[entity]
+	return &w.Animation[entity]
 }
 
 func (w *World) GetState(entity int) *State {
-	return &w.state[entity]
+	return &w.State[entity]
 }
 
 func (w *World) CreateEntity() int {
 	for entity := 0; entity < ENTITY_COUNT; entity++ {
-		if w.mask[entity] == COMPONENT_NONE {
+		if w.Mask[entity] == COMPONENT_NONE {
 			return entity
 		}
 	}
@@ -70,12 +80,12 @@ func (w *World) CreateEntity() int {
 
 func (w *World) DestroyEntity(entity uint64) {
 	fmt.Fprintf(os.Stdout, "Entity destroyed: %d\n", entity)
-	w.mask[entity] = COMPONENT_NONE
+	w.Mask[entity] = COMPONENT_NONE
 }
 
 func (w *World) GetColliders() []int {
 	var list []int
-	for entity, signature := range w.mask {
+	for entity, signature := range w.Mask {
 		if signatureMatches(signature, COMPONENT_TRANSFORM) {
 			list = append(list, entity)
 		}
@@ -104,105 +114,4 @@ func (w *World) Collides(a, b sdl.Rect) bool {
 	if left1 > right2 { return false }
 
 	return true
-}
-
-func (w *World) CreateHeart(engine * Engine, x, y float32) int {
-	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_STATE
-	w.transform[entity].x = x
-	w.transform[entity].y = y
-	w.transform[entity].w = 8
-	w.transform[entity].h = 7
-	w.animation[entity].animationStates = make(map[StateKey]AnimationState)
-	w.animation[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
-		asset: "Items/Heart/Pick heart",
-		flip:  sdl.FLIP_NONE,
-		frameRate: 100,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-	return entity
-}
-
-func (w *World) CreateCoin(engine * Engine, x, y float32) int {
-	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_STATE
-	w.transform[entity].x = x
-	w.transform[entity].y = y
-	w.transform[entity].w = 8
-	w.transform[entity].h = 8
-	w.animation[entity].animationStates = make(map[StateKey]AnimationState)
-	w.animation[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
-		asset: "Items/Coin/Shine",
-		flip:  sdl.FLIP_NONE,
-		frameRate: 200,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-	return entity
-}
-
-func (w *World) CreatePlayer(engine *Engine, x, y float32) int {
-	entity := w.CreateEntity()
-	w.mask[entity] = COMPONENT_TRANSFORM|COMPONENT_ANIMATION|COMPONENT_VELOCITY|COMPONENT_FOCUSED|COMPONENT_STATE|COMPONENT_CONTROLLER
-
-	w.transform[entity].x = x
-	w.transform[entity].y = y
-	w.transform[entity].w = 9
-	w.transform[entity].h = 14
-
-	w.velocity[entity].maxSpeedY = 5
-	w.velocity[entity].maxSpeedX = 2.2
-
-	w.state[entity].canJump = true
-
-	w.state[entity].state = ENTITY_STATE_IDLE
-
-	w.animation[entity].animationStates = make(map[StateKey]AnimationState)
-	w.animation[entity].animationStates[ENTITY_STATE_IDLE] = AnimationState{
-		asset: "Player/Idle",
-		flip:  sdl.FLIP_NONE,
-		frameRate: 200,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-	w.animation[entity].animationStates[ENTITY_STATE_LEFT] = AnimationState{
-		asset: "Player/Run",
-		flip: sdl.FLIP_HORIZONTAL,
-		frameRate: 60,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-	w.animation[entity].animationStates[ENTITY_STATE_RIGHT] = AnimationState{
-		asset: "Player/Run",
-		flip: sdl.FLIP_NONE,
-		frameRate: 60,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-	w.animation[entity].animationStates[ENTITY_STATE_JUMP] = AnimationState{
-		asset: "Player/Fall-Jump-WallJ/Jump",
-		flip: sdl.FLIP_NONE,
-		frameRate: 0,
-		infinite: true,
-		orientation: ORIENTATION_RIGHT,
-	}
-
-	w.animation[entity].animationStates[ENTITY_STATE_ROLL] = AnimationState{
-		asset: "Player/Roll",
-		flip: sdl.FLIP_NONE,
-		frameRate: 150,
-		infinite: false,
-		orientation: ORIENTATION_RIGHT,
-	}
-
-	w.animation[entity].animationStates[ENTITY_STATE_SHOOT] = AnimationState{
-		asset: "Player/Bow",
-		flip: sdl.FLIP_NONE,
-		frameRate: 150,
-		infinite: false,
-		orientation: ORIENTATION_RIGHT,
-	}
-
-	return entity
 }

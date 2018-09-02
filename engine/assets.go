@@ -15,25 +15,25 @@ type TextureAtlas struct {
 }
 
 type AnimationFrame struct {
-	X int32 `json:"x"`
-	Y int32 `json:"y"`
-	W int32 `json:"w"`
-	H int32 `json:"h"`
+	X int32 `json:"X"`
+	Y int32 `json:"Y"`
+	W int32 `json:"W"`
+	H int32 `json:"H"`
 	SourceX int32 `json:"sourceX"`
 	SourceY int32 `json:"sourceY"`
 	SourceW int32 `json:"sourceW"`
 	SourceH int32 `json:"sourceH"`
 	CenterOffset struct {
-		X float64 `json:"x"`
-		Y float64 `json:"y"`
+		X float64 `json:"X"`
+		Y float64 `json:"Y"`
 	} `json:"centerOffset"`
 	PivotPoint struct {
-		X float64 `json:"x"`
-		Y float64 `json:"y"`
+		X float64 `json:"X"`
+		Y float64 `json:"Y"`
 	} `json:"pivotPoint"`
 	PivotPointNorm struct {
-		X float64 `json:"x"`
-		Y float64 `json:"y"`
+		X float64 `json:"X"`
+		Y float64 `json:"Y"`
 	} `json:"pivotPointNorm"`
 	Rotated bool `json:"rotated"`
 }

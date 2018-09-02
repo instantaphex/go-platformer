@@ -1,12 +1,7 @@
 package main
 
-import (
-	"github.com/veandco/go-sdl2/sdl"
-	"fmt"
-	"os"
-)
 
-type Game struct {
+/*type Game struct {
 	running bool
 	renderer *sdl.Renderer
 	window *sdl.Window
@@ -45,7 +40,6 @@ func (g *Game) Init() bool {
 	audioManager.Init()
 	audioManager.PlayBgMusic("theme.mp3")
 
-	/*  DUMPING GROUND */
 	textureAtlas.Init()
 	mapControl.Load("level1")
 	cameraControl.targetMode = TARGET_MODE_CENTER
@@ -54,7 +48,6 @@ func (g *Game) Init() bool {
 	EntityList = append(EntityList, g.player)
 	EntityList = append(EntityList, NewCoin(400, 400))
 	cameraControl.SetTarget(g.player)
-	/*  DUMPING GROUND */
 	return true
 }
 
@@ -130,4 +123,4 @@ func (g *Game) Cleanup() {
 	g.renderer.Destroy()
 	g.window.Destroy()
 	sdl.Quit()
-}
+}*/

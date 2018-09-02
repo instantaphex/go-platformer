@@ -57,14 +57,10 @@ func (m *Map) Load(mapName string, world *World) error {
 		fmt.Println(group)
 	}
 	for _, obj := range group.Objects {
-		if obj.Type == "player" {
-			world.CreatePlayer(m.engine, float32(obj.X), float32(obj.Y))
-		}
-		if obj.Type == "coin" {
-			world.CreateCoin(m.engine, float32(obj.X), float32(obj.Y))
-		}
-		if obj.Type == "heart" {
-			world.CreateHeart(m.engine, float32(obj.X), float32(obj.Y))
+		if builder, ok := world.entityBuilders[obj.Type]; ok {
+			builder(world, float32(obj.X), float32(obj.Y))
+		} else {
+			fmt.Fprintf(os.Stderr, "No entity builder registered for type: %s\n", obj.Type)
 		}
 	}
 
