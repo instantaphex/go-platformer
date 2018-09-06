@@ -13,6 +13,11 @@ const (
 	COMPONENT_CONTROLLER = 1 << 6
 	COMPONENT_TRANSFORM = 1 << 7
 	COMPONENT_COLLIDABLE = 1 << 8
+	COMPONENT_TAG = 1 << 9
+	COMPONENT_INVENTORY = 1 << 11
+	COMPONENT_COLLECTIBLE = 1 << 12
+	COMPONENT_TEXT = 1 << 13
+	COMPONENT_HUD = 1 << 14
 )
 
 const (
@@ -40,6 +45,8 @@ const (
 	ENTITY_STATE_SHOOT
 	ENTITY_STATE_DIE
 	ENTITY_STATE_ROLL
+	ENTITY_STATE_WALLR
+	ENTITY_STATE_WALLL
 )
 
 type Transform struct {
@@ -47,6 +54,20 @@ type Transform struct {
 	Y float32
 	W int32
 	H int32
+
+	SpeedX    float32
+	SpeedY    float32
+	AccelX    float32
+	AccelY    float32
+	MaxSpeedX float32
+	MaxSpeedY float32
+
+	Sensor struct {
+		Top bool
+		Bottom bool
+		Left bool
+		Right bool
+	}
 }
 
 func (t *Transform) GetBB() sdl.Rect {
@@ -67,13 +88,12 @@ func (t *Transform) GetPotentialBB(x, y int32) sdl.Rect {
 	}
 }
 
-type Velocity struct {
-	SpeedX    float32
-	SpeedY    float32
-	AccelX    float32
-	AccelY    float32
-	MaxSpeedX float32
-	MaxSpeedY float32
+func (t *Transform) GetSensorPoints() (sdl.Point, sdl.Point, sdl.Point, sdl.Point) {
+	top := sdl.Point{ X: int32(t.X) + (t.W / 2), Y: int32(t.Y) - 1}
+	bottom := sdl.Point{ X: int32(t.X) + (t.W / 2), Y: (int32(t.Y) + t.H) + 1 }
+	left := sdl.Point{ X: int32(t.X) - 1, Y: int32(t.Y) + (t.H / 2) }
+	right := sdl.Point{ X: (int32(t.X) + t.W) + 1, Y: int32(t.Y) + (t.H / 2)}
+	return top, bottom, left, right
 }
 
 type State struct {
@@ -84,6 +104,11 @@ type State struct {
 	MoveLeft    bool
 	Rolling     bool
 	Shooting    bool
+	LeftSlide   bool
+	RightSlide  bool
+	Sliding     bool
+	JumpCount   int
+	JumpFrameCount int
 	Orientation Orientation
 	Flip        sdl.RendererFlip
 	State       StateKey
@@ -105,8 +130,26 @@ func (a *Animation) CurrentState() AnimationState {
 	return a.AnimationStates[a.AnimState]
 }
 
+type Tag struct {
+	Value string
+}
+
+type Inventory struct {
+	Items map[string]int
+}
+
+type Collectible struct {
+	Type string
+	Value int
+}
+
+type Text struct {
+	Value string
+}
+
 // empty components for tagging
 type Controller struct {}
 type Focused struct {}
 type Collidable struct {}
+type Hud struct {}
 

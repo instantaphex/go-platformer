@@ -8,6 +8,7 @@ import (
 
 type Engine struct {
 	running bool
+	paused bool
 	World *World
 	renderer *sdl.Renderer
 	window *sdl.Window
@@ -20,6 +21,8 @@ type Engine struct {
 	FPS *Fps
 	Map *Map
 	Camera *Camera
+	Events *Dispatcher
+	Text *TextManager
 	Config EngineConfig
 }
 
@@ -38,6 +41,7 @@ func New(cfg EngineConfig) *Engine {
 	eng.File = 		&FileManager{}
 	eng.Input = 	NewInputManager()
 	eng.Assets = 	&TextureAtlas{engine: eng}
+	eng.Text =      &TextManager{engine: eng}
 	eng.Graphics = 	&Graphics{engine: eng}
 	eng.Map = 		&Map{engine: eng}
 	eng.Audio = 	&AudioManager{engine: eng}
@@ -80,21 +84,29 @@ func (e *Engine) Init() error {
 
 	e.Assets.Init()
 	e.Audio.Init()
+	e.Text.Init()
 
 	return nil
 }
 
 func (g *Engine) Run() int {
 	g.running = true
+	g.paused = false
 	for g.running {
-		g.HandleEvents()
-		g.Update()
+			g.HandleEvents()
+		if !g.paused {
+			g.Update()
+		}
 	}
 	g.Cleanup()
 	return 0
 }
 
 func (g *Engine) HandleEvents() {
+	/**
+	 * set keystates every frame so that lastState and currentState will be set correctly
+	 */
+	g.Input.UpdateKeyStates()
 	for e := sdl.PollEvent(); e != nil; e = sdl.PollEvent() {
 		switch t := e.(type) {
 		case *sdl.QuitEvent:
@@ -106,6 +118,10 @@ func (g *Engine) HandleEvents() {
 			g.Input.KeysHeld[sym] = t.State == sdl.PRESSED
 			if sym == sdl.K_q {
 				g.running = false
+			}
+			if sym == sdl.K_p  && t.State == sdl.RELEASED {
+				fmt.Println("p pressed")
+				g.paused = !g.paused
 			}
 		}
 	}
@@ -121,6 +137,7 @@ func (g *Engine) Update() {
 func (g *Engine) Cleanup() {
 	g.Assets.Cleanup()
 	g.Audio.Cleanup()
+	g.Text.Cleanup()
 
 	g.renderer.Destroy()
 	g.window.Destroy()

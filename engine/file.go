@@ -13,6 +13,10 @@ func (f *FileManager) GetMap(filename string) (*os.File, error) {
 	return f.GetContents(mapPath)
 }
 
+func (f *FileManager) GetFontPath(filename string) string {
+	return f.GetPath("fonts", filename, "ttf")
+}
+
 func (f *FileManager) GetArea(filename string) (*os.File, error) {
 	areaPath := f.GetPath("maps", filename, "area")
 	return f.GetContents(areaPath)

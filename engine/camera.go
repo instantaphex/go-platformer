@@ -28,7 +28,7 @@ func (c *Camera) X() float32 {
 	if c.targetX != nil {
 		if c.targetMode == TARGET_MODE_CENTER {
 			ww := float32(c.engine.Config.WindowWidth)
-			return *c.targetX - (ww / (2 * c.engine.Config.Scale))
+			return *c.targetX - (ww / (2 * (c.engine.Config.Scale)))
 		}
 		return *c.targetX
 	}
@@ -39,7 +39,7 @@ func (c *Camera) Y() float32 {
 	if c.targetY != nil {
 		if c.targetMode == TARGET_MODE_CENTER {
 			wh := float32(c.engine.Config.WindowHeight)
-			return *c.targetY - ((wh / (2 * c.engine.Config.Scale)) + 100)
+			return *c.targetY - (wh / (2 * c.engine.Config.Scale))
 		}
 		return *c.targetY
 	}

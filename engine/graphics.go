@@ -24,7 +24,7 @@ func (g *Graphics) DrawFull(texture *sdl.Texture, x int32, y int32) {
 	_, _, w, h, err := texture.Query()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to draw texture: %s\n", err)
-		panic(err)
+		//panic(err)
 	}
 	g.DrawPart(texture, x, y, 0, 0, w, h, sdl.FLIP_NONE)
 }

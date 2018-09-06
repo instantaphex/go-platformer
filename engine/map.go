@@ -25,6 +25,7 @@ type Tile struct {
 	TileID int32
 	TypeID int32
 }
+func (t *Tile) IsSolid() bool { return t.TypeID == TILE_TYPE_BLOCK }
 
 func (m *Map) Load(mapName string, world *World) error {
 	var err error
@@ -58,7 +59,7 @@ func (m *Map) Load(mapName string, world *World) error {
 	}
 	for _, obj := range group.Objects {
 		if builder, ok := world.entityBuilders[obj.Type]; ok {
-			builder(world, float32(obj.X), float32(obj.Y))
+			builder(world, float32(obj.X + (obj.Width / 2)), float32(obj.Y - obj.Height))
 		} else {
 			fmt.Fprintf(os.Stderr, "No entity builder registered for type: %s\n", obj.Type)
 		}
@@ -124,6 +125,16 @@ func (m *Map) GetTile(x int32, y int32) *Tile {
 		return nil
 	}
 	return &m.tileList[id]
+}
+
+func (m *Map) PointCollidesTile(x, y int32) bool {
+	tile := m.GetTile(x, y)
+	// return !m.PosValidTile(tile)
+	if tile != nil {
+		return tile.IsSolid()
+	} else {
+		return false
+	}
 }
 
 func (m *Map) Cleanup() {

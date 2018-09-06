@@ -2,35 +2,47 @@ package engine
 
 import (
 	"fmt"
-	"os"
 	"github.com/veandco/go-sdl2/sdl"
+	"os"
 )
 
-const ENTITY_COUNT = 3
+const ENTITY_COUNT = 100
 
 type EntityBuilder func(world *World, x, y float32) int
 
 type World struct {
 	// data components
-	Mask      [ENTITY_COUNT]uint64
-	Transform [ENTITY_COUNT]Transform
-	Velocity  [ENTITY_COUNT]Velocity
-	Animation [ENTITY_COUNT]Animation
-	State     [ENTITY_COUNT]State
+	Mask        	[ENTITY_COUNT]uint64
+	Transform   	[ENTITY_COUNT]Transform
+	Animation   	[ENTITY_COUNT]Animation
+	State       	[ENTITY_COUNT]State
+	Tag		    	[ENTITY_COUNT]Tag
+	Collectible 	[ENTITY_COUNT]Collectible
+	Inventory   	[ENTITY_COUNT]Inventory
+	Text        	[ENTITY_COUNT]Text
 
 	// no data components
-	Focused    [ENTITY_COUNT]Focused
-	Controller [ENTITY_COUNT]Controller
-	Collidable [ENTITY_COUNT]Collidable
+	Focused     	[ENTITY_COUNT]Focused
+	Controller  	[ENTITY_COUNT]Controller
+	Collidable  	[ENTITY_COUNT]Collidable
+	Hud         	[ENTITY_COUNT]Hud
 
 	systems []System
 	entityBuilders map[string]EntityBuilder
+	Events *Dispatcher
+}
+
+func NewWorld() *World {
+	return &World {
+		Events: NewDispatcher(),
+	}
 }
 
 func (w *World) RegisterSystem(system System) {
 	if w.systems == nil {
 		w.systems = make([]System, 0)
 	}
+	system.Init(w)
 	w.systems = append(w.systems, system)
 }
 
@@ -55,16 +67,44 @@ func (w *World) GetTransform(entity int) *Transform {
 	return &w.Transform[entity]
 }
 
-func (w *World) GetVelocity(entity int) *Velocity {
-	return &w.Velocity[entity]
-}
-
 func (w *World) GetAnimation(entity int) *Animation {
 	return &w.Animation[entity]
 }
 
 func (w *World) GetState(entity int) *State {
 	return &w.State[entity]
+}
+
+func (w *World) GetTag(entity int) *Tag {
+	return &w.Tag[entity]
+}
+
+func (w *World) GetCollectible(entity int) *Collectible {
+	return &w.Collectible[entity]
+}
+
+func (w *World) GetInventory(entity int) *Inventory {
+	return &w.Inventory[entity]
+}
+
+func (w *World) GetText(entity int) *Text {
+	return &w.Text[entity]
+}
+
+func (w *World) GetTextByTag(value string) *Text {
+	for entity, mask := range w.Mask {
+		if signatureMatches(mask, COMPONENT_TAG|COMPONENT_TEXT) {
+			tag := w.GetTag(entity)
+			if tag.Value == value {
+				return w.GetText(entity)
+			}
+		}
+	}
+	return nil
+}
+
+func (w *World) GetHud(entity int) *Hud {
+	return &w.Hud[entity]
 }
 
 func (w *World) CreateEntity() int {
@@ -78,8 +118,8 @@ func (w *World) CreateEntity() int {
 	return ENTITY_COUNT
 }
 
-func (w *World) DestroyEntity(entity uint64) {
-	fmt.Fprintf(os.Stdout, "Entity destroyed: %d\n", entity)
+func (w *World) DestroyEntity(entity int) {
+	// fmt.Fprintf(os.Stdout, "Entity destroyed: %d\n", entity)
 	w.Mask[entity] = COMPONENT_NONE
 }
 

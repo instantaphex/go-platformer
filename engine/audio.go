@@ -9,14 +9,17 @@ import (
 type AudioManager struct {
 	engine *Engine
 	Sounds map[string]*mix.Music
+	buffer int
 }
 
 func (mm *AudioManager) Init() {
+	// mm.buffer = 4096
+	mm.buffer = 2048
 	if err := mix.Init(mix.INIT_MP3); err != nil {
 		fmt.Fprintf(os.Stderr, "Error initializing audio: %s\n", err)
 	}
 
-	if err := mix.OpenAudio(22050, mix.DEFAULT_FORMAT, 2, 4096); err != nil {
+	if err := mix.OpenAudio(22050, mix.DEFAULT_FORMAT, 2, mm.buffer); err != nil {
 		fmt.Println(err)
 		return
 	}
